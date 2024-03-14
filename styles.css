@@ -2,9 +2,9 @@
     position: fixed; /* 상단 바를 고정합니다. */
     top: 0; /* 화면 위쪽에 위치하도록 합니다. */
     width: 100%; /* 전체 너비를 차지하도록 합니다. */
-    background-color: #a6a6a6; /* 배경색을 설정합니다. */
-    color: #d03d3d; /* 텍스트 색상을 설정합니다. */
-    padding: 10px; /* 내부 여백을 추가합니다. */
+    background-color: #4dae7d; /* 배경색을 설정합니다. */
+    color: white; /* 텍스트 색상을 설정합니다. */
+    padding: 5px; /* 내부 여백을 추가합니다. */
     z-index: 1000; /* 다른 요소 위에 나타나도록 합니다. */
   }
   
@@ -13,3 +13,31 @@
     /* 필요에 따라 더 많은 스타일을 추가할 수 있습니다. */
   }
   
+  .section {
+    position: relative;
+    color: black;
+    font-size: 35px;
+  }
+
+  .project_title{
+    position:relative;
+    color:black;
+    padding-top: 3px;
+    font-size: 20px;
+
+  }
+
+  .button {
+    
+    background-color: gray; /* 버튼 배경색 */
+    border: none; /* 테두리 없음 */
+    color: white; /* 텍스트 색상 */
+    padding: 7px 20px; /* 내부 여백 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration:none; /* 텍스트 밑줄 제거 */
+    display: inline-block; /* 인라인 요소로 표시 */
+    font-size: 16px; /* 폰트 크기 */
+    margin: 4px 2px; /* 마진 설정 */
+    cursor: pointer; /* 커서 스타일 설정 */
+    border-radius: 8px; /* 버튼 모서리를 둥글게 만듦 */
+}
