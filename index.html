@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>고정 상단 바</title>
+  <title>포트폴리오</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
+<script>
+  function Page()
+  {
+    window.location.href = "https://github.com/seopangs";
+  }
+</script>
+
 <body>
   <div class="navbar">
     <!-- 여기에 상단 바 내용을 추가합니다. -->
-    SeoPangs Portfolio
-    <a href="https://github.com/seopangs">GitHub</a>
+    SeoPangs
+    <button class="button" onclick="Page()">GitHub</button>
     <a href="#1">Project Introduce</a>
     <!-- 필요에 따라 추가할 수 있습니다. -->
   </div>
 
   <!-- 나머지 내용을 추가합니다. -->
   <div class="content">
+    <div class="section">
+      자기 소개
+
+    </div>
     <!-- 페이지의 나머지 내용을 추가합니다. -->
-    initial
+    <div id= "1" class="project_title"> 프로젝트 제목</div>
   </div>
 </body>
 </html>
