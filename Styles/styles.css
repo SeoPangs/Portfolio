@@ -3,31 +3,87 @@
     top: 0; /* 화면 위쪽에 위치하도록 합니다. */
     left: 0;
     width: 100%; /* 전체 너비를 차지하도록 합니다. */
+    height: 40px;
     background-color: #4dae7d; /* 배경색을 설정합니다. */
     color: white; /* 텍스트 색상을 설정합니다. */
     padding: 5px; /* 내부 여백을 추가합니다. */
     z-index: 1000; /* 다른 요소 위에 나타나도록 합니다. */
     
   }
+
+  .topbar a {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+    cursor: pointer;
+  }
   
   .content {
-    margin-left: 180px; /* 사이드바 너비만큼 왼쪽으로 밀어줌 */
+    margin-left: 200px; /* 사이드바 너비만큼 왼쪽으로 밀어줌 */
     padding-top: 50px; /* 상단 바만큼의 여백을 추가하여 컨텐츠가 가려지지 않도록 합니다. */
     /* 필요에 따라 더 많은 스타일을 추가할 수 있습니다. */
   }
+
+  .content subtitle {
+    font-size: 20px;
+    font-weight: bold;
+  }
   
   .section {
+
     position: relative;
     color: black;
-    font-size: 35px;
+    font-size: 45px;
+    font-weight: bold;
+    
   }
+
+  .section project {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; /* 줄 바꿈을 허용 */
+    justify-content: flex-start; 
+  }
+
+  .section project .container{
+    display: grid;
+    position:relative;
+    color:black;
+    padding-top: 3px;
+
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .section project .box {
+    width: 330px; /* 너비 설정 */
+    height: 270px; /* 높이 설정 */
+    background-color: #f0f0f0; /* 배경색 설정 */
+    border: 1px solid #ccc; /* 테두리 설정 */
+    padding: 20px; /* 안쪽 여백 설정 */
+    margin-top: 20px;
+  }
+
+  .section project .box content {
+    display: grid;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  
 
   .project_title{
     position:relative;
     color:black;
     padding-top: 3px;
-    font-size: 20px;
-
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: bold;
   }
 
   .button {
@@ -42,18 +98,20 @@
     font-size: 16px; /* 폰트 크기 */
     margin: 4px 2px; /* 마진 설정 */
     cursor: pointer; /* 커서 스타일 설정 */
-    border-radius: 8px; /* 버튼 모서리를 둥글게 만듦 */
 }
 
-.box {
-  width: 80%; /* 너비 설정 */
+.project_box {
+  width: 400px; /* 너비 설정 */
   height: 200px; /* 높이 설정 */
   background-color: #f0f0f0; /* 배경색 설정 */
   border: 1px solid #ccc; /* 테두리 설정 */
   padding: 20px; /* 안쪽 여백 설정 */
   margin-top: 15px;
   margin-bottom: 50px;
+  margin-right: 20px;
 }
+
+
 
 .sidebar {
   height: 100%;
@@ -101,4 +159,40 @@
       vertical-align: top;	/* 위 */
       vertical-align: bottom;   /* 아래 */
       vertical-align: middle;   /* 가운데 */
+}
+
+.profile {
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 350px 1fr; /* 이미지와 텍스트 열의 너비를 자동으로 조절하고, 텍스트 열이 남은 공간을 채우도록 설정합니다. */
+/* 세로 가운데 정렬 */
+  gap: 10px; /* 이미지와 텍스트 사이의 간격을 조절합니다. */
+}
+
+.profile .image{
+  position: relative;
+  display: grid;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #000;
+  background-color: #94d9b7;
+  margin: 15px;
+  font-size: 20px;
+  text-align: center;
+  place-items: center;
+  
+}
+
+.profile name {
+  font-size: 25px;
+  padding-top: 51000px;
+}
+
+.profile school {
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.profile email {
+  font-size: 10px;
 }

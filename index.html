@@ -10,60 +10,114 @@
 
 
 
-
 <body>
   <div class="topbar">
+    <a onclick="MovePage('./index.html')">SeoPangs</a>
     <!-- 여기에 상단 바 내용을 추가합니다. -->
-    <span onclick="MovePage('./index.html')">SeoPangs</span>
-    <button class="button" onclick="MovePage('https://github.com/seopangs')">GitHub</button>
-    <a href="#Project">Project Introduce</a>
+    <span style="font-weight: bold;">진예준</span>
+    <!--<button class="button" onclick="MovePage('https://github.com/seopangs')">GitHub</button>-->
     <!-- 필요에 따라 추가할 수 있습니다. -->
   </div>
 
   <div class="sidebar">
-    <a href="#">자기소개</a>
-    <a href="#">기술 소개</a>
-    <a href="#">프로젝트 소개</a>
-    <a href="#">흠 뭐넣지</a>
+    <a href="#Introduce">Introduce</a>
+    <a href="#Skill">Technical Skill</a>
+    <a href="#Project">Project</a>
+    <a>&nbsp;</a>
+    <a href="https://github.com/seopangs" target="_blank">GitHub</a>
   </div>
 
   <!-- 나머지 내용을 추가합니다. -->
   <div class="content">
     <h1>포트폴리오</h1>
-    <div class="section">
-      자기 소개
-      <div class="box">
-        대충 자기소개 영역
+    <div class="section", id="Introduce">
+      Introduce
+      <div class="profile">
+        <div class="image">사진 넣는 위치</div>
+        
+        <div>
+          <name>진예준</name><br><br>
+          학교<br>
+          <school>영암고등학교</school><br>
+          <school>상명대학교 게임전공 
+            <a style="font-weight: bold;">(2020.3 ~2025.2)</a>
+          </school><br><br>
+          이메일<br>
+          <email>croderknight@gmail.com</email><br><br>
+          깃허브 링크<br>
+          <a href="https://github.com/seopangs">https://github.com/seopangs</a>
+        
+        </div>
+        
+        <br><br>
+
       </div>
     </div>
-    <div class="section">
-      기술 
-      <p style="font-size: 20px;">
-        Lanague: C, C++, C#, Python, Javascript, php, SQL<br>
+    <div class="section", id="Skill">
+      Technical Skill
+      <p style="font-size: 20px; font-weight: normal;">
+        Lanague: C, C++, C#, Python<br>
         Engine: Unity, Unreal Engine 4<br>
-        형상관리: Git, github
+        Tool: Git, github, Notion
 
       </p>
-      
-        
-        
-
-        
-      
-      
     </div>
+    <br><br><br><br><br><br>
 
     <!-- 프로젝트 내용을 추가합니다. -->
     <div class="section" id ="Project">
-      프로젝트
-      <div id= "1" class="project_title">
-        <div class="box" onclick="MovePage('./Project/MandarinFarm.html')">
-          Light Up Life<br>
-          <img src="./Project/Image/LightUpLife.png" width="150">
+      Project
+      <project>
+        <div class="container">
+          Light Up Life
+          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
+            <img src="./Project/Image/LightUpLife.png" width="100%"><br>
+            <content>
+              [게임전공 과제] Unity 프로그래밍
+            </content>
+          </div>
         </div>
+        <div class="container">
+          Drive By Draw
+          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
+            <img src="./Project/Image/DriveByDraw.png" width="100%"><br>
+            <content>
+              [게임전공 과제] Unreal Engine 4<br> 게임 프로그래밍
+            </content>
+          </div>
+        </div>
+        <div class="container">
+          꿀벌 시뮬레이터
+          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
+            <img src="./Project/Image/BeeSimulation.png" width="100%" height="200px"><br>
+            <content>
+              [게임전공 게임잼] Unreal Engine 4 게임 프로그래밍
+            </content>
+          </div>
+        </div>
+        <div class="container">
+          <div style="font-size: 20px";>흔들리는 원두향에서 네 커피향이 <br>느껴진거야</div>
+          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
+            <img src="./Project/Image/SummerGameJam2023.png" width="100%" height="200px"><br>
+            <content>
+              [게임전공 게임잼] Unity 게임 프로그래밍
+            </content>
+          </div>
+        </div>
+        <div class="container">
+          귤러가요
+          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
+            <img src="./Project/Image/WinterGameJam2023.png" width="100%" height="200px"><br>
+            <content>
+              [게임전공 게임잼] Unreal Engine 4 게임 프로그래밍
+            </content>
+          </div>
+        </div>
+
       </div>
-    </div>
-    <!-- 프로젝트 내용을 추가합니다. -->
+      <!-- 프로젝트 내용을 추가합니다. -->
+      </project>
+      
     
 
 
