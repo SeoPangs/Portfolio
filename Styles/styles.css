@@ -22,7 +22,6 @@
   .content {
     margin-left: 200px; /* 사이드바 너비만큼 왼쪽으로 밀어줌 */
     padding-top: 50px; /* 상단 바만큼의 여백을 추가하여 컨텐츠가 가려지지 않도록 합니다. */
-    /* 필요에 따라 더 많은 스타일을 추가할 수 있습니다. */
   }
 
   .content subtitle {
@@ -185,7 +184,7 @@
 
 .profile name {
   font-size: 25px;
-  padding-top: 51000px;
+  
 }
 
 .profile school {
@@ -194,5 +193,7 @@
 }
 
 .profile email {
-  font-size: 10px;
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 10px;
 }

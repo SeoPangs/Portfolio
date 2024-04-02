@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Up Life</title>
+    <title>꿀벌 시뮬레이션</title>
     <link rel="stylesheet" href="../Styles/styles.css">
     <script src="../Function/Function.js"></script>
 </head>
@@ -28,18 +28,17 @@
 
     <div class="content">
         <div class="project_title">
-            Light UP Life
+            꿀벌 시뮬레이션
         </div> 
         <p>
-            Unity를 이용한 탑뷰 슈팅 게임 개발
+            Unity를 이용한 3D 비행체 이동 게임
         </p>
-        <img src="./Image/LightUpLife.png" alt="프로젝트 이미지" width=500px">
-        <img src="./Image/LightUpLife_Play.png" alt="프로젝트 이미지" width=500px">
+        <img src="./Image/BeeSimulation.png" alt="프로젝트 이미지" width=500px">
         <br>
         <p>
             <subtitle>기간</subtitle><br>
             <p>
-                2022-09-01 ~ 2022-12-16
+                2023-6-22 ~ 2023-6-23
             </p>
             <subtitle>사용된 기술</subtitle><br>
             <p>
@@ -53,44 +52,35 @@
             <p>
                 게임 기획, 게임 프로그래밍
             </p>
-            <subtitle>관련 수업</subtitle><br>
+            <subtitle>관련 활동</subtitle><br>
             <p>
-                상명대학교 게임전공 전공수업 "게임소프트웨어개발1" 
+                상명대학교 게임전공 게임잼
             </p>
         </p>
         <br><br><br>
         <p>
             <subtitle>프로젝트에 기여한 역할</subtitle>
             <p>
-                프로젝트 총괄<br><br>
+                <br>
                 <subtitle>기획</subtitle><br>
-                빛이라는 아이디어를 활용한 게임 기획<br>
+                벌 게임 기획<br>
                 <br>
                 <subtitle>개발</subtitle><br>
-                코루틴을 활용하여 보스 패턴의 개발,<br>
-                플레이어 움직임에 대한 로직 수정, <br>
-                마우스 위치에 따른 플레이어 회전과 투사체 조준 계산
+                날아다니는 벌 만들기<br>
+
             </p>
             <br><br>
             
             <subtitle>프로젝트를 진행하며 느낀 내용 </subtitle>
             <p>
-                처음으로 게임엔진을 사용하여 게임을 직접 만들다보니 고생이 많았으나 즐거웠다.<br>
-                팀원들이 제작한 코드에서 부족한 부분을 찾아 문제를 제기하고,<br> 
-                해당 문제에 대한 해결책을 제시했고, 직접적으로 코드 수정을 하였다.<br>
-                <br>
-                특히 플레이어 움직임에 따른 버그가 일어나면서 이동 방식을 단순 RigidBody에 힘을 가하는 것이 아닌 
-                NavMesh를 이용한 움직임으로 바꾸면서 엔진 작동 방식의 문제를 확인하고 이를 수정하였다.<br>
-                마우스가 조준하는 것보다 위, 또는 아래를 가르킨 방향으로 투사체가 나가고 플레이어의 회전 또한 그러하였기 때문에 이를 직접적으로 코드를 수정하면서 3차원 벡터계산을 하였다.
-
-
+                none
             </p>
             <br><br>
         </p>
         
         <subtitle>관련 영상</subtitle><br>
         <p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/cmBsJnEhEPo?si=nvRyrqRYKJuMFB3e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/IcxBWkvtPK4?si=hgCWu8fUXFnyWfVS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </p>
         
     </div>
