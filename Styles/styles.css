@@ -30,7 +30,6 @@
   }
   
   .section {
-
     position: relative;
     color: black;
     font-size: 45px;
@@ -150,14 +149,14 @@
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .sidebar {
     width: 100%; /* 작은 화면에서는 사이드바가 전체 너비를 차지하도록 함 */
     z-index: 1; /* 다른 콘텐츠 위로 올라오도록 설정 */
     display: none; /* 작은 화면에서는 사이드바를 숨김 */
   }
   .content {
-    margin-left: 0; /* 작은 화면에서는 본문을 왼쪽으로 밀어내지 않음 */
+    margin-left: 15px; /* 작은 화면에서는 본문을 왼쪽으로 밀어내지 않음 */
   }
 }
 
