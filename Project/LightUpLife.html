@@ -6,6 +6,15 @@
     <title>Light Up Life</title>
     <link rel="stylesheet" href="../Styles/styles.css">
     <script src="../Function/Function.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/edge-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 </head>
 <body>
     <div class="topbar">
@@ -86,6 +95,66 @@
 
             </p>
             <br><br>
+            <subtitle>코드</subtitle>
+            <pre style="margin-right: 15px; padding: 0;">
+                <code class="language-csharp">void Start()
+{
+    anim= GetComponent<Animator>();
+    StartCoroutine(BossPattern());
+    Debug.Log("실행중");
+
+}
+
+IEnumerator BossPattern()
+{
+    while(HP>0)
+    {
+        pattern = Random.Range(1, 3);
+        
+        Debug.Log("pattern = " + pattern);
+
+        if (isRaged)
+        {
+            if (pattern == 1)
+            {
+                SpacialAttack();
+                Debug.Log("SpacialAttack");
+            }
+            else if (pattern == 2)
+            {
+                Attack1();
+                Debug.Log("Attack");
+            }  
+        }
+        else
+        {
+            Attack1();
+            Debug.Log("Attack");
+        }
+
+        Debug.Log("HP = " + HP);
+        yield return new WaitForSeconds(5f);
+    }
+}
+//this is code
+
+public void Attack1()
+{
+    anim.SetTrigger("isAttacking");
+    Invoke("SummonTracingBullet", 0.6f);
+}
+
+
+void SpacialAttack()
+{
+    anim.SetTrigger("isBttacking");
+    Invoke("SummonMonster", 1.4f);
+    HP -= 1;
+}
+                </code>
+            </pre>
+
+            
         </p>
         
         <subtitle>관련 영상</subtitle><br>
@@ -95,7 +164,6 @@
         
     </div>
     
-   
 </body>
 </html>
 
