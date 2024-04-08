@@ -56,8 +56,10 @@
     margin-bottom: 50px;
     margin-left: 0px;
     margin-right: 20px;
-    cursor: pointer;
+ 
   }
+
+ 
 
   .section project .box {
     width: 330px; /* 너비 설정 */
@@ -66,6 +68,18 @@
     border: 1px solid #ccc; /* 테두리 설정 */
     padding: 20px; /* 안쪽 여백 설정 */
     margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .section project .container img{
+    width: 330px;
+    height: 210px;
+    object-fit: cover;
+  }
+
+  .section project .container:hover img{
+    opacity: 0.8;
+    object-fit: cover;
   }
 
   .section project .box content {
@@ -210,4 +224,9 @@
   font-size: 20px;
   font-weight: normal;
   margin-left: 10px;
+}
+
+.hidden
+{
+  display: none;
 }

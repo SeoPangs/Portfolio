@@ -42,8 +42,9 @@
         <p>
             Unity를 이용한 탑뷰 슈팅 게임 개발
         </p>
-        <img src="./Image/LightUpLife.png" alt="프로젝트 이미지" width=500px">
-        <img src="./Image/LightUpLife_Play.png" alt="프로젝트 이미지" width=500px">
+        <img src="./Image/LightUpLife.png" alt="프로젝트 이미지" width=500px height="320">
+        <iframe width="560" height="320" src="https://www.youtube.com/embed/cmBsJnEhEPo?si=nvRyrqRYKJuMFB3e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
         <br>
         <p>
             <subtitle>기간</subtitle><br>
@@ -95,17 +96,10 @@
 
             </p>
             <br><br>
-            <subtitle>코드</subtitle>
+            <subtitle>코드</subtitle> <button id="showButton">Show</button>
+            <div id="code-block" class="hidden">
             <pre style="margin-right: 15px; padding: 0;">
-                <code class="language-csharp">void Start()
-{
-    anim= GetComponent<Animator>();
-    StartCoroutine(BossPattern());
-    Debug.Log("실행중");
-
-}
-
-IEnumerator BossPattern()
+                <code class="language-csharp">IEnumerator BossPattern()
 {
     while(HP>0)
     {
@@ -133,37 +127,38 @@ IEnumerator BossPattern()
         }
 
         Debug.Log("HP = " + HP);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f); // 5초마다 보스 패턴
     }
-}
-//this is code
-
-public void Attack1()
-{
-    anim.SetTrigger("isAttacking");
-    Invoke("SummonTracingBullet", 0.6f);
-}
-
-
-void SpacialAttack()
-{
-    anim.SetTrigger("isBttacking");
-    Invoke("SummonMonster", 1.4f);
-    HP -= 1;
 }
                 </code>
             </pre>
 
-            
+        </div>
         </p>
         
-        <subtitle>관련 영상</subtitle><br>
-        <p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/cmBsJnEhEPo?si=nvRyrqRYKJuMFB3e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </p>
+        
         
     </div>
     
 </body>
+
+<script>
+    //Code Block Show/Hide by Button
+    document.getElementById('showButton').addEventListener('click', function() 
+    {
+        var codeblock = document.getElementById('code-block');
+        codeblock.classList.toggle('hidden');
+        if (codeblock.classList.contains('hidden')) 
+        {
+            // 열려있을 때 버튼 텍스트 변경
+            this.textContent = 'Show';
+        } 
+        else 
+        {
+            // 닫혀있을 때 버튼 텍스트 변경
+            this.textContent = 'Hide';
+        }
+    });
+</script>
 </html>
 
