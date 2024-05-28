@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List</title>
+    <link rel="stylesheet" href="../Styles/styles.css">
+</head>
+<body>
+    <label for="options">Choose an option:</label>
+    <select id="options" onchange="updateList()">
+        <option value="Unity">Unity</option>
+        <option value="Unreal">Unreal</option>
+        <option value="Etc">Etc</option>
+    </select>
+    <div class ='section'>
+        <project id = 'project'>
+        </project>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
