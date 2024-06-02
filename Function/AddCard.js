@@ -75,7 +75,7 @@ function AddProjectCard(from, item) {
 function GenerateCardByJSON(list, tag_name)
 {
     console.log('GenerateCardByJSON');
-    fetch('/Project/ProjectList.json')
+    fetch('../Project/ProjectList.json')
     .then(response => response.json())
     .then(data => {
         if (Array.isArray(data)){
