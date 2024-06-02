@@ -6,7 +6,7 @@
         "explanation": "빛을 통해 왕국을 정화하는 소년의 이야기",
         
         "tags": ["Unity", "C#"],
-        "image_src": "/Project/Image/LightUpLife.png"
+        "image_src": "./Project/Image/LightUpLife.png"
     },
     {
         "title": "Drive By Draw",
@@ -14,7 +14,7 @@
         "semester" : 5,
         "explanation": "레이싱을 통해 카드 게임을 하는 이야기",
         "tags": ["UnrealEngine", "C++"],
-        "image_src": "/Project/Image/DriveByDraw.png"
+        "image_src": "./Project/Image/DriveByDraw.png"
     },
     {
         "title": "별의 유랑",
@@ -22,7 +22,7 @@
         "semester": 6,
         "explanation": "",
         "tags": ["UnrealEngine", "C++"],
-        "image_src": "/Project/Image/LightUpLife.png"
+        "image_src": "./Project/Image/LightUpLife.png"
     },
     {
         "title": "흔들리는 원두향에서 네 커피향이 느껴진거야",
@@ -31,7 +31,7 @@
         "explanation": "커피와 우유를 통해, 나이를 조절해 계절을 버티는 이야기",
         "keywoad": ["커피", "계절", "커피"],
         "tags": ["Unity", "C#"],
-        "image_src": "/Project/Image/SummerGameJam2023.png"
+        "image_src": "./Project/Image/SummerGameJam2023.png"
     },
     {
         "title": "꿀벌 시뮬레이션",
@@ -40,7 +40,7 @@
         "explanation": "지구 멸망을 막기 위해 쓰레기를 부수는 꿀벌의 이야기",
         "keywoad": ["향기", "지구", "금지"],
         "tags": ["Unity", "C#"],
-        "image_src": "/Project/Image/BeeSimulation.png"
+        "image_src": "./Project/Image/BeeSimulation.png"
     },
     {
         "title": "귤러가요",
@@ -49,7 +49,7 @@
         "explanation": "비행기에서 떨어진 귤이 갯벌을 벗어나기 위한 이야기",
         "keywoad": ["귤", "갯벌", "소리"],
         "tags": ["UnrealEngine", "C++"],
-        "image_src": "/Project/Image/WinterGameJam2023.png"
+        "image_src": "./Project/Image/WinterGameJam2023.png"
     },
     {
         "title": "U2U",
@@ -57,6 +57,6 @@
         "semester" : 5,
         "explanation": "DB를 사용한 게임 아이템 거래 사이트",
         "tags": ["PHP", "MySQL", "Etc"],
-        "image_src": "/Project/Image/U2U.png"
+        "image_src": "./Project/Image/U2U.png"
     }
 ]
