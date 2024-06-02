@@ -28,7 +28,7 @@
     font-weight: bold;
   }
   
-  .section {
+  section {
     padding-top: 50px;
     position: relative;
     color: black;
@@ -37,14 +37,14 @@
     
   }
 
-  .section project {
+  section project {
     position: relative;
     display: flex;
     flex-wrap: wrap; /* 줄 바꿈을 허용 */
     justify-content: flex-start; 
   }
 
-  .section project .container{
+  section project .container{
     display: grid;
     justify-content: start;
     position:relative;
@@ -62,7 +62,7 @@
 
  
 
-  .section project .box {
+  section project .box {
     width: 330px; /* 너비 설정 */
     height: 300px; /* 높이 설정 */
     background-color: #f0f0f0; /* 배경색 설정 */
@@ -73,38 +73,38 @@
     line-height: 0.9;
   }
 
-  .section project .container img{
+  section project .container img{
     width: 330px;
     height: 210px;
     object-fit: cover;
   }
 
-  .section project .container:hover img{
+  section project .container:hover img{
     opacity: 0.8;
     object-fit: cover;
   }
 
-  .section project .box content {
+  section project .box content {
     font-size: 20px;
     font-weight: normal;
   }
 
-  .section project .box content img{
+  section project .box content img{
     width:auto;
     height: auto;
   }
   
-  .section green {
+  section green {
     color: #000;
     background-color: #94d9b7;
   }
 
-  .section yellow {
+  section yellow {
     color: #000;
     background-color: #fff7a0;
   }
 
-  .section red {
+  section red {
     color: #000;
     background-color: #ff8585;
   }
