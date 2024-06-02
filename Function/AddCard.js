@@ -1,4 +1,5 @@
 function updateList() {
+    console.log("updateList");
     const select = document.getElementById('options');
     const list = document.getElementById('projectlist');
 
@@ -16,6 +17,7 @@ function updateList() {
  * @param {string} item 
  */
 function AddProjectCard(from, item) {
+    console.log("AddProjectCard");
     //프로젝트 하나를 담는 컨테이너를 추가(제목, 박스 등)
     ProjectContainer = document.createElement('div');
     ProjectContainer.className = 'container';
@@ -72,6 +74,7 @@ function AddProjectCard(from, item) {
  */
 function GenerateCardByJSON(list, tag_name)
 {
+    console.log('GenerateCardByJSON');
     fetch('/Project/ProjectList.json')
     .then(response => response.json())
     .then(data => {
