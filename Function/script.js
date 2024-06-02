@@ -20,18 +20,20 @@ function updateList() {
 
     // Create and append list items
     selectedItems.forEach(item => {
-        AddCard(list, item);
+        AddProjectCard(list, item);
     });
 }
 
-function AddCard(from, name) {
-    a = document.createElement('div');
-    a.className = 'container';
-    a.textContent = name;
-    from.appendChild(a)
+//프로젝트 Card
+function AddProjectCard(from, name) {
+    //프로젝트 하나를 담는 컨테이너를 추가(제목, 박스 등)
+    ProjectContainer = document.createElement('div');
+    ProjectContainer.className = 'container';
+    ProjectContainer.textContent = name;
+    from.appendChild(ProjectContainer)
 
-    b = document.createElement('div');
-    b.className = 'box'
-    a.appendChild(b);
+    BoxCard = document.createElement('div');
+    BoxCard.className = 'box'
+    ProjectContainer.appendChild(BoxCard);
     
 }
