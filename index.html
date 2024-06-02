@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
   <link rel="stylesheet" href="Styles/styles.css">
-  <script src="./Function/Function.js"></script>
+  <script src="/Function/Function.js"></script>
+  <script src="/Function/addCard.js"></script>
   <link rel="icon" href="/sword_icon.svg"/>
 </head>
 
@@ -107,12 +108,13 @@
     <!-- 프로젝트 내용을 추가합니다. -->
     <section id ="Project">
       Project
-      <select>
-        <option>태그 기능 추가 예정</option>
-        <option>태그 넣으면 맞는 프로젝트만 뜨게</option>
-        <option>JS 공부좀 더 하겠습니다.</option>
+      <select id="options" onchange="updateList()">
+        <option value='null'>태그를 선택해주세요</option>
+        <option value="Unity">Unity</option>
+        <option value="UnrealEngine">Unreal Engine</option>
+        <option value="Etc">Etc</option>
       </select>
-      <project>
+      <project id="projectlist">
         <div class="container">
           Light Up Life
           <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
