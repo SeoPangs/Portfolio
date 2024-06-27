@@ -24,8 +24,14 @@
   }
 
   .content subtitle {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
+  }
+
+  .content p {
+    font-size: 17px;
+    font-weight:lighter;
+    margin: 0%
   }
   
   section {
@@ -202,7 +208,7 @@
   gap: 10px; /* 이미지와 텍스트 사이의 간격을 조절합니다. */
 }
 
-.profile .image{
+.profile img {
   position: relative;
   display: grid;
   width: 300px;

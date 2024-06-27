@@ -39,6 +39,7 @@ function AddProjectCard(from, item) {
     BoxCard = document.createElement('div');
     BoxCard.className = 'box'
     ProjectContainer.appendChild(BoxCard);
+    BoxCard.addEventListener('click' ,() => { window.location.href = item.site;});
 
     //썸네일 제작
     Image = document.createElement('img');
@@ -50,7 +51,9 @@ function AddProjectCard(from, item) {
     BoxContent.textContent = '[' + item.purpose +']' ;
     BoxContent.appendChild(document.createElement('br'));
 
-    //BoxContent.textContent += ( ' '+ item.explanation);
+    //BoxContent.textContent += ( ' '+ item.explanation );
+    //BoxContent.appendChild(document.createElement('br'));
+
     BoxCard.appendChild(BoxContent);
     item.tags.forEach(tag => {
         badge = null;
@@ -59,6 +62,10 @@ function AddProjectCard(from, item) {
         
         if(badge = CreateStaticBadge(tag)) {
             BoxContent.appendChild(badge);
+            const spacer = document.createElement('div');
+            spacer.style.display = 'inline-block';
+            spacer.style.width = '0px'; // 간격 크기 설정
+            BoxContent.appendChild(spacer);
         }
         
         
