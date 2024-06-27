@@ -3,18 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Up Life</title>
+    <title>귤러가요</title>
     <link rel="stylesheet" href="../Styles/styles.css">
     <script src="../Function/Function.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/edge-dark.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-<!-- and it's easy to individually load additional languages -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-
-<script>hljs.highlightAll();</script>
-
 </head>
 <body>
     <div class="topbar">
@@ -36,98 +27,65 @@
     
 
     <div class="content">
+        <section>
         <div class="project_title">
             귤러가요
         </div> 
         <p>
-            Unity를 이용한 탑뷰 슈팅 게임 개발
+            Unreal Engine을 회전 3D 플랫폼 게임<br>
+            게임잼 주제: 귤, 소리, 갯벌
         </p>
-        <img src="./Image/WinterGameJam2023.png" alt="프로젝트 이미지" width=500px>
+        <img src="./Image/WinterGameJam2023.png" alt="프로젝트 이미지" width=500px">
+        <iframe width="500" height="280" src="https://www.youtube.com/embed/r7RXkzD2n-k?si=38ICjdT5MdlUhWwH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <br>
         <p>
             <subtitle>기간</subtitle><br>
             <p>
-                2022-09-01 ~ 2022-12-16
+                2023-12-26 ~ 2023-12-27
             </p>
             <subtitle>사용된 기술</subtitle><br>
             <p>
-                Unity, C#
+                Unreal Engine 4, C++
             </p>
             <subtitle>팀 구성</subtitle><br>
             <p>
-                4명
+                3명
             </p>
             <subtitle>맡은 역할</subtitle><br>
             <p>
                 게임 기획, 게임 프로그래밍
             </p>
-            <subtitle>관련 수업</subtitle><br>
+            <subtitle>관련 활동</subtitle><br>
             <p>
-                상명대학교 게임전공 전공수업 "게임소프트웨어개발1" 
+                상명대학교 게임전공 2023 동계 게임잼
             </p>
         </p>
-        <br><br><br>
+        <br>
         <p>
             <subtitle>프로젝트에 기여한 역할</subtitle>
             <p>
                 프로젝트 총괄<br><br>
                 <subtitle>기획</subtitle><br>
-                빛이라는 아이디어를 활용한 게임 기획<br>
+                귤: 귤이 굴러가는 게임 기획<br>
+                소리: 소리를 듣고 파도를 예측하고 파도를 피하는 게임 기획<br>
+                갯벌: 갯벌에 빠진 귤이 탈출하는 게임 기획<br>
                 <br>
                 <subtitle>개발</subtitle><br>
-                코루틴을 활용하여 보스 패턴의 개발,<br>
-                플레이어 움직임에 대한 로직 수정, <br>
-                마우스 위치에 따른 플레이어 회전과 투사체 조준 계산
+                플레이어(귤)을 방향키로 굴러가도록 시스템 개발<br>
+                일정 랜덤 시간마다 파도가 차오르게 하는 시스템 개발<br>
+                발판을 오래 밟으면 가라앉는 시스템 개발<br>
+                언리얼 시퀀서를 통핸 시네마틱 영상 제작<br>
+                등등 기타 게임의 모든 개발 
+
             </p>
-            <br><br>
+            <br>
             
-            <subtitle>프로젝트를 진행하며 느낀 내용 </subtitle>
-            <p>
-                처음으로 게임엔진을 사용하여 게임을 직접 만들다보니 고생이 많았으나 즐거웠다.<br>
-                팀원들이 제작한 코드에서 부족한 부분을 찾아 문제를 제기하고,<br> 
-                해당 문제에 대한 해결책을 제시했고, 직접적으로 코드 수정을 하였다.<br>
-                <br>
-                특히 플레이어 움직임에 따른 버그가 일어나면서 이동 방식을 단순 RigidBody에 힘을 가하는 것이 아닌 
-                NavMesh를 이용한 움직임으로 바꾸면서 엔진 작동 방식의 문제를 확인하고 이를 수정하였다.<br>
-                마우스가 조준하는 것보다 위, 또는 아래를 가르킨 방향으로 투사체가 나가고 플레이어의 회전 또한 그러하였기 때문에 이를 직접적으로 코드를 수정하면서 3차원 벡터계산을 하였다.
-
-
-            </p>
             <br><br>
-            <subtitle>코드</subtitle> <button id="showButton">Show</button>
-            <div id="code-block" class="hidden">
-            <pre style="margin-right: 15px; padding: 0;">
-                <code class="language-csharp">
-
-                </code>
-            </pre>
-
-        </div>
         </p>
-        
-        
-        
+    </section>
     </div>
     
+   
 </body>
-
-<script>
-    //Code Block Show/Hide by Button
-    document.getElementById('showButton').addEventListener('click', function() 
-    {
-        var codeblock = document.getElementById('code-block');
-        codeblock.classList.toggle('hidden');
-        if (codeblock.classList.contains('hidden')) 
-        {
-            // 열려있을 때 버튼 텍스트 변경
-            this.textContent = 'Show';
-        } 
-        else 
-        {
-            // 닫혀있을 때 버튼 텍스트 변경
-            this.textContent = 'Hide';
-        }
-    });
-</script>
 </html>
 
