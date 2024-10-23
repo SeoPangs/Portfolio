@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <link rel="stylesheet" href="../Styles/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/edge-light.min.css">
 
 <script src="../Function/Function.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 
+<script>hljs.highlightAll();</script>
 <body>
     <div class="topbar">
         <a onclick="MovePage('../index.html')">SeoPangs</a>
@@ -12,7 +17,6 @@
         <!--<button class="button" onclick="MovePage('https://github.com/seopangs')">GitHub</button>-->
         <!-- 필요에 따라 추가할 수 있습니다. -->
       </div>
-    
       <div class="sidebar">
         <a href="../index.html#Introduce">Introduce</a>
         <a href="../index.html#Skill">Technical Skill</a>
@@ -22,8 +26,438 @@
       </div>
 
       <div class="content" style="padding-top: 50px;">
-        <a href="LightUpLife.html">Light Up Life</a><br>
-        <a href="DriveByDraw.html">Drive By Draw</a><br>
-        <a href="BeeSimulation.html">꿀벌 시뮬레이션</a><br>
+        별의 유랑<br>
+        <div id ="Code1">
+          프로젝트 코드<br>
+          BTTask_MazePatrol.h
+          <div id="code-block">
+            <pre style="margin-right: 15px; padding: 0; font-size: 14px; font-weight: lighter;">
+                <code class="language-cpp">
+#pragma once
+
+#include "CoreMinimal.h"
+#include "BehaviorTree/Tasks/BTTask_BlackboardBase.h"
+#include "BTTask_MazePatrol.generated.h"
+
+
+enum EDirection : int32
+{
+	North = 0,
+	South = 1,
+	East = 2,
+	West= 3
+};
+
+UCLASS()
+class CRAFTINGSTAR_API UBTTask_MazePatrol : public UBTTask_BlackboardBase
+{
+	GENERATED_BODY()
+	
+	UBTTask_MazePatrol();
+
+public:
+	UPROPERTY(EditAnywhere , Category = "Maze")
+	FBlackboardKeySelector PatrolNumber;
+	UPROPERTY(EditAnywhere , Category = "Maze")
+	FBlackboardKeySelector Destination;
+
+	TArray<TArray<TCHAR>> Board;
+
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp , uint8* NodeMemory) override;
+
+};
+
+                </code>
+              </pre>
+          </div>
+         <br>
+        </div>
+        <div id ="Code2">
+          프로젝트 코드 5<br>BTTask_MazePatrol.cpp
+          <div id="code-block">
+            <pre style="margin-right: 15px; padding: 0; font-size: 14px; font-weight: lighter;">
+                <code class="language-cpp">
+                  
+  #include "BTTask_MazePatrol.h"
+  #include "BehaviorTree/BlackboardComponent.h"
+  #include "Mob/MazePatroller.h"
+  #include "GameFramework/Controller.h"
+  #include "../Object/MazeBoard.h"
+  #include "../Object/MazeBlock.h"
+  
+  UBTTask_MazePatrol::UBTTask_MazePatrol()
+  {
+    NodeName = "Maze Patrol";
+    
+  }
+  
+  EBTNodeResult::Type UBTTask_MazePatrol::ExecuteTask(UBehaviorTreeComponent& OwnerComp , uint8* NodeMemory)
+  {
+      UBlackboardComponent* BlackboardComp = OwnerComp.GetBlackboardComponent();
+  
+      //GetOwner로 AIController를 가져온디.
+      auto OwnController = Cast&ltAController&gt(OwnerComp.GetOwner());
+      if ( !OwnController )return EBTNodeResult::Failed;
+      
+      //GetPawn으로 AMazePatroller를 가져온다.
+      auto Patroller = Cast&ltAMazePatroller&gt(OwnController->GetPawn());
+  
+      if ( BlackboardComp && Patroller)
+      {
+  
+          // 현재 있는 밸류;
+          int32 CurrentNumber = BlackboardComp->GetValueAsInt(PatrolNumber.SelectedKeyName);
+          //갈 장소 GO GO GO, 블럭 위치
+          FVector Gogogo = BlackboardComp->GetValueAsVector(Destination.SelectedKeyName);
+          
+  
+          //여기부터 구현 부분.
+          if ( auto Maze = Patroller->Maze )
+          {
+              //앞으로 간 블럭의 수
+              int BlockCount = 0;
+  
+              //현재 있는 블록을 알아보자
+              auto Block = Maze->GetBlockByIndex(CurrentNumber);
+  
+              //그렇다면 직진할 방향을 정할까요?
+              EDirection dir = static_cast&ltEDirection&gt( FMath::RandRange(0 , 3) );
+              
+              //앞으로 갈 블록이 '널이 아니고' '땅이면' 새로운 블록을 찾아볼까요?
+              for ( auto PreNumber = CurrentNumber; Block != nullptr && Block->BlockType == EMazeBlockType::MBT_Floor; BlockCount++)
+              {
+                  //한 칸 나가기
+                  CurrentNumber = PreNumber;
+                  //현재 번호를 입력해 현재 위치 반환
+                  auto CurVector = Maze->GetVector2DByIndex(CurrentNumber);
+                  
+                  //갈림길에 사용될 위치 반환
+                  auto CrossroadVector = CurVector;
+  
+                  //만약 갈림길이면 빠져나온다
+                  bool bCrossroads = false;
+  
+                  //갈림길 탐색
+                  TArray&ltEDirection&gt SearchedCrossroads;
+  
+                  
+                  //현재 진행방향을 제외한 방향을 탐색,
+                  for ( int i = 0; i < 4; ++i )
+                  {
+                      if ( i != dir )
+                      {
+                          SearchedCrossroads.Add(static_cast&ltEDirection&gt( i ));
+                      }
+                  }
+  
+  
+                  //해당 방향들을 탐색
+                  for ( EDirection PreDir : SearchedCrossroads)
+                  {
+                      switch ( PreDir )
+                      {
+                      case North:
+                          CrossroadVector.Y++;
+                          break;
+                      case South:
+                          CrossroadVector.Y--;
+                          break;
+                      case East:
+                          CrossroadVector.X++;
+                          break;
+                      case West:
+                          CrossroadVector.X--;
+                          break;
+                      default:
+                          break;
+                      }
+                      //이제 갈림길일 곳을 연산
+                      auto CrossroadNumber = Maze->GetIndexBy2D(CrossroadVector.X , CrossroadVector.Y);
+                      //갈림길일수도 있는 블록을 저장
+                      auto CrossroadBlock = Maze->GetBlockByIndex(CrossroadNumber);
+  
+                      //갈림길인지 판단, 블럭이 있고, 블럭이 길이라면
+                      if ( CrossroadBlock && CrossroadBlock->BlockType == EMazeBlockType::MBT_Floor)
+                      {
+                          bCrossroads = true;
+                      }
+                  }
+                  if ( bCrossroads && BlockCount > 1)
+                  {
+                      UE_LOG(LogTemp , Display , TEXT("sival"));
+                      break; //갈림길이면 반환
+                  }
+                  
+                  //방향 연산 하고
+                  switch ( dir )
+                  {
+                  case North:
+                      CurVector.Y++;
+                      break;
+                  case South:
+                      CurVector.Y--;
+                      break;
+                  case East:
+                      CurVector.X++;
+                      break;
+                  case West:
+                      CurVector.X--;
+                      break;
+                  default:
+                      break;
+                  }
+  
+                  //이제 앞으로 나갈 곳을 연산
+                  PreNumber = Maze->GetIndexBy2D(CurVector.X , CurVector.Y);
+  
+                  //앞으로 갈 블록을 저장
+                  Block = Maze->GetBlockByIndex(PreNumber);
+  
+                  
+              }
+  
+              //현재 블록 값을 셋팅
+              Block = Maze->GetBlockByIndex(CurrentNumber);
+              if ( Block )
+              {
+                  Gogogo = Block->GetActorLocation();
+                  BlackboardComp->SetValueAsVector(PatrolNumber.SelectedKeyName , Gogogo);
+              }
+  
+          }
+          BlackboardComp->SetValueAsInt(PatrolNumber.SelectedKeyName , CurrentNumber);
+          BlackboardComp->SetValueAsVector(Destination.SelectedKeyName , Gogogo);
+  
+          UE_LOG(LogTemp , Display , TEXT("Block Number %d"), CurrentNumber);
+          return EBTNodeResult::Succeeded; // Or return EBTNodeResult::Failed; based on task success or failure
+  
+  
+      }
+      return EBTNodeResult::Failed;
+  }
+                </code>
+            </pre>
+
+        </div>
+           <br>
+          
+        </div>
+        <div id ="Code3">
+          프로젝트 코드<br>
+          BTTask_MazePatrol.h
+          <div id="code-block">
+            <pre style="margin-right: 15px; padding: 0; font-size: 14px; font-weight: lighter;">
+                <code class="language-cpp">
+  #pragma once
+
+  #include "CoreMinimal.h"
+  #include "GameFramework/Character.h"
+  #include "MazePatroller.generated.h"
+  
+  UCLASS()
+  class CRAFTINGSTAR_API AMazePatroller : public ACharacter
+  {
+    GENERATED_BODY()
+  
+  public:
+    // Sets default values for this character's properties
+    AMazePatroller();
+  
+  protected:
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
+  
+  public:	
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
+  
+    // Called to bind functionality to input
+    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+  
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    class AMazeBoard* Maze;
+  
+  };  
+          <br>
+        </div>
+        </div>
+
+        <div id ="Code4">
+          프로젝트 코드<br>
+          BTTask_MazePatrol.h
+          <div id="code-block">
+            <pre style="margin-right: 15px; padding: 0; font-size: 14px; font-weight: lighter;">
+                <code class="language-cpp">
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "AssimilationComponent.h"
+#include "GameFramework/Character.h"
+#include "NiagaraComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/SplineComponent.h"
+#include "SplineChasingInterface.h"
+#include "../Object/AssimilationTrigerComponent.h"
+#include "../CraftingStarPS.h"
+
+// Sets default values for this component's properties
+UAssimilationComponent::UAssimilationComponent()
+{
+  // Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
+  // off to improve performance if you don't need them.
+  PrimaryComponentTick.bCanEverTick = true;
+  
+  HaloEffect = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Assimilation Effect"));
+  HaloEffect->SetupAttachment(this);
+
+  ConstructorHelpers::FObjectFinder<UNiagaraSystem> HaloAsset(TEXT("NiagaraSystem'/Game/CraftingStarCharacter/Abilities/NS_Assimilate.NS_Assimilate'"));
+  if ( HaloAsset.Succeeded() ) 
+  {
+    HaloEffect->SetAsset(HaloAsset.Object);
+  }
+
+  HaloEffect->SetVisibility(false);
+  // ...
+  
+}
+
+
+// Called when the game starts
+void UAssimilationComponent::BeginPlay()
+{
+  Super::BeginPlay();
+  
+  this->OnComponentBeginOverlap.AddDynamic(this, &UAssimilationComponent::DetectSpline);
+  this->OnComponentEndOverlap.AddDynamic(this , &UAssimilationComponent::UndetectSpline);
+}
+
+
+// Called every frame
+void UAssimilationComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+  Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+  // ...
+}
+
+void UAssimilationComponent::Assimilation()
+{
+
+  if ( GetOwner()->HasAuthority() )
+  {
+    MulticastAssimilation();
+  }
+  else
+  {
+    ServerAssimilation();
+  }
+}
+
+void UAssimilationComponent::ServerAssimilation_Implementation()
+{
+  MulticastAssimilation();
+}
+void UAssimilationComponent::MulticastAssimilation_Implementation()
+{
+  UBoxComponent* ClosestTriger = nullptr;
+  float ClosestDistance = MAX_FLT;
+
+  for ( auto SplineTriger : SplineTrigers )
+  {
+    //현재 컴포넌트와 스플라인 트리거의 거리 측정
+    float Distance = ( SplineTriger->GetComponentLocation() - this->GetComponentLocation() ).Size();
+
+    if ( Distance < ClosestDistance )
+    {
+      ClosestTriger = SplineTriger;
+      ClosestDistance = Distance;
+    }
+  }
+  
+
+  if ( ClosestTriger && ClosestTriger->Implements<USplineChasingInterface>() )
+  {
+    if ( auto OwnerCharacter = Cast<ACharacter>(GetOwner()) )
+    {
+      if ( auto State = Cast<ACraftingStarPS>(OwnerCharacter->GetPlayerState()) )
+      {
+        ISplineChasingInterface::Execute_ChaseStart(ClosestTriger , this , State->PlayerData.Mode == EPlayerRole::ELight);
+      }
+    }
+    
+  }
+
+  // 현재까지의 가장 가까운 컴포넌트 갱신
+
+
+}
+
+void UAssimilationComponent::DetectSpline(UPrimitiveComponent* OverlappedComp , AActor* OtherActor ,
+    UPrimitiveComponent* OtherComp , int32 OtherBodyIndex , bool bFromSweep , const FHitResult& SweepResult)
+{
+  if ( auto Triger = Cast<UAssimilationTrigerComponent>(OtherComp) )
+  {
+    Triger->SetAssimilationComponent(this);
+    UE_LOG(LogTemp , Display , TEXT("Detect Spline"));
+    if ( Triger->Implements<USplineChasingInterface>() )
+    {
+      SplineTrigers.Add(Triger);
+    }
+  }
+  
+}
+
+void UAssimilationComponent::UndetectSpline(UPrimitiveComponent* OverlappedComp , AActor* OtherActor ,
+  UPrimitiveComponent* OtherComp , int32 OtherBodyIndex)
+{
+  if ( auto Triger = Cast<UAssimilationTrigerComponent>(OtherComp) )
+  {
+    //Triger->SetAssimilationComponent(nullptr);
+    UE_LOG(LogTemp , Display , TEXT("Undetect Spline"));
+    if ( Triger->Implements<USplineChasingInterface>() )
+    {
+      SplineTrigers.Remove(Triger);
+    }
+  }
+}
+
+void UAssimilationComponent::HideOwner(bool bHide)
+{
+  if ( auto OwnerCharacter = Cast<ACharacter>(GetOwner()) )
+  {
+    OwnerCharacter->GetMesh()->SetHiddenInGame(bHide);
+    TArray<USceneComponent*> AttachedComponents;
+    OwnerCharacter->GetMesh()->GetChildrenComponents(true , AttachedComponents);
+    for ( USceneComponent* AttachedComponent : AttachedComponents )
+    {
+      AttachedComponent->SetHiddenInGame(bHide);
+    }
+  }
+}
+
+void UAssimilationComponent::ShowHaloEffect(bool bShow)
+{
+  if ( HaloEffect )
+  {
+    if ( auto OwnerCharacter = Cast<ACharacter>(GetOwner()) )
+    {
+      HaloEffect->SetVisibility(bShow);
+      
+      if ( auto State = Cast<ACraftingStarPS>(OwnerCharacter->GetPlayerState())) 
+      {
+        HaloEffect->SetNiagaraVariableLinearColor(FString("Color") , 
+          EPlayerRole::ELight == State->PlayerData.Mode ? FLinearColor::White : FLinearColor::Black);
+      }
+    }
+
+    
+      
+  }
+
+  else UE_LOG(LogTemp , Warning , TEXT("HaloEffcet Null"));
+}
+          <br>
+        </div>
+        </div>
+
       </div>
 </body>
