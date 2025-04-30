@@ -3,7 +3,7 @@
         "title": "별의 유랑",
         "purpose": "게임전공 과제",
         "semester": 6,
-        "explanation": "",
+        "explanation": "별을 찾아 여행하는 쌍둥이별의 이야기",
         "tags": ["UnrealEngine", "C++"],
         "site": "./Project/WanderingStars.html",
         "image_src": "./Project/Image/WanderingStars.png"
@@ -13,7 +13,6 @@
         "purpose": "게임전공 과제",
         "semester" : 4,
         "explanation": "빛을 통해 왕국을 정화하는 소년의 이야기",
-        
         "tags": ["Unity", "C#"],
         "site": "./Project/LightUpLife.html",
         "image_src": "./Project/Image/LightUpLife.png"
@@ -54,6 +53,26 @@
         "semester" : 6,
         "explanation": "비행기에서 떨어진 귤이 갯벌을 벗어나기 위한 이야기",
         "keywoad": ["귤", "갯벌", "소리"],
+        "tags": ["UnrealEngine", "C++"],
+        "site": "./Project/WinterGameJam2023.html",
+        "image_src": "./Project/Image/WinterGameJam2023.png"
+    },
+    {
+        "title": "PEASE",
+        "purpose": "게임전공 게임잼",
+        "semester" : 7,
+        "explanation": "소음에 고통받는 아이의 망상 이야기",
+        "keywoad": ["비눗방울", "변헝", "소음음"],
+        "tags": ["UnrealEngine", "C++"],
+        "site": "./Project/WinterGameJam2023.html",
+        "image_src": "./Project/Image/WinterGameJam2023.png"
+    },
+    {
+        "title": "환생등용묘차",
+        "purpose": "게임전공 게임잼",
+        "semester" : 8,
+        "explanation": "환생을 하기 위한 자동차들의 경쟁",
+        "keywoad": ["잼", "버스", "어둠"],
         "tags": ["UnrealEngine", "C++"],
         "site": "./Project/WinterGameJam2023.html",
         "image_src": "./Project/Image/WinterGameJam2023.png"
