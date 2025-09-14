@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="Styles/styles.css">
+  <link rel="stylesheet" href="Styles/bars.css">
+  <link rel="stylesheet" href="Styles/card.css">
+  <script src="./Function/Function.js"></script>
+  <script src="./Function/ProjectCardFunction.js"></script>
+  <link rel="icon" href="./sword_icon.svg"/>
+
+  <!-- meta -->
+  <meta property="og:title" content="진예준 포트폴리오">
+  <meta property="og:url" content="//seopangs.github.io/Portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./jyj.png">
+  <meta property="og:description" content="Colorful Creator & Fascinating Fantasy">
+</head>
+
+<body>
+    <div class="topbar">
+      <a href ="./index.html">SeoPangs Portfolio</a>
+      <!-- 여기에 상단 바 내용을 추가합니다. -->
+      <span style="font-weight: bold;">진예준</span>
+      <!-- 필요에 따라 추가할 수 있습니다. -->
+    </div>
+    
+    <div class="sidebar">
+      <a href="#Profile">Profile</a>
+      <a href="#Skill">Technical Skill</a>
+      <a href="#Project">Project</a>
+      <a href="#Awards">Awards</a>
+      <a href="#Activities">Activities</a>
+      <a>&nbsp;</a>
+      <a href="https://github.com/seopangs" target="_blank">GitHub</a>
+    </div>
+    <div class="content">
+
+      <section id="Introduce">
+        Colorful Creator & Fascinating Fantasy<br>
+        <p></p>
+        <div style="padding-left: 250px;font-size: 25px; font-weight: normal">" 다채로운 작품을 만들고<br>
+          매혹적인 판타지 세계를 만들자. "</div>
+          
+        <p style="font-size: 20px; font-weight: normal;">
+        </p>
+      </section>
+      <section id="Profile">
+        Profile
+        <div class="profile">
+          <img src="./me.jpg">
+          
+          <div>
+            <name>진예준 (JIN YE JUN)</name><br><br>
+            학교<br>
+            <school>상명대학교 게임전공 
+              <a style="font-weight: bold;">(2020.3 ~2025.2)</a>
+            </school><br><br>
+            이메일<br>
+            <email>croderknight@gmail.com</email><br><br>
+            깃허브 링크<br>
+            <a href="https://github.com/seopangs">https://github.com/seopangs</a>
+          
+          </div>
+  
+      </section>
+        <br>
+      
+  
+      <section id="Skill">
+        Technical Skill<!-- <a href="./Project/"><img alt="Static Badge" src="https://img.shields.io/badge/Click%20to%20Project%20-%20red?style=flat" ></a>-->
+        <p style="font-size: 15px; font-weight: normal;">
+          <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-blue?style=for-the-badge&logo=C%2B%2B">
+           Unreal Engine 프로젝트를 C++로 개발할 수 있으며, 클래스 개념을 이해하여 UML를 사용하여 다이어그램들을 작성할 수 있다.<br>
+          <img alt="C#" src="https://img.shields.io/badge/C%23-567812?style=for-the-badge&logo=C%23">
+           Unity 프로젝트를 C# 언어를 통해 개발할 수 있다.<br>
+          <img alt="Python" src="https://img.shields.io/badge/Python-blue?style=for-the-badge&logo=python&logoColor=white">
+           Pygame, sklearn, Numpy 등 라이브러리를 활용하여 게임과 프로그램들을 개발할 수 있다.<br>
+          <br>
+          <img alt="Unity" src="https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=unity&logoColor=white">
+           2D, 3D 둘다 사용하며 게임을 개발할 수 있으며, <a href="#Project">프로젝트 리스트</a>에 있는 게임을 제작할 수 있다.<br>
+          <img alt="UnrealEngine" src="https://img.shields.io/badge/Unreal%20Engine-black?style=for-the-badge&logo=unrealengine&logoColor=white">
+           C++, 블루프린트를 사용하여 게임을 개발할 수 있으며, <a href="#Project">프로젝트 리스트</a>에 있는 게임을 제작할 수 있다.<br>
+          <br>
+          <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
+          <img alt="Github" src="https://img.shields.io/badge/Github-333333?style=for-the-badge&logo=github&logoColor=white">
+          프로젝트들을 Github를 이용하여 공유하고 Branch, Pull Request, Merge, Git flow를 이해하며 능숙하게 형상관리를 할 수 있다.<br>
+          <img alt="Notion" src="https://img.shields.io/badge/Notion-555555?style=for-the-badge&logo=notion&logoColor=white">
+          노션을 통해 프로젝트 문서를 작업해왔고, 이를 통해 동료 간의 문서 공유를 할 수 있다.<br>
+          <br>
+          <!--이 부분은 뱃지를 누르면 프로젝트 리스트로 이동하도록 추후 변경 -->
+        </p>
+      </section>
+
+      <H1 style="padding-top: 30px;">응애 </H1>
+      <div class="scroll-box">
+
+      </div> 
+    </div>
+    
+</body>
+
+<script> addCardByJson("Drive By Draw")</script>
