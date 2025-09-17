@@ -19,9 +19,12 @@
     padding-top: 50px;
     position: relative;
     color: black;
-    font-size: 45px;
     font-weight: bold;
     
+  }
+  
+  section h1 { 
+    font-size: 45px;
   }
 
   section project {
@@ -131,11 +134,6 @@
   margin-right: 20px;
 }
 
-
-
-
-
-
  table{ border-collapse : collapse; }  /*이중선 제거*/
  th,td
  {
@@ -190,4 +188,51 @@
 .hidden
 {
   display: none;
+}
+
+/* 레이아웃 */
+.skills-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr; /* 왼쪽: 배지, 오른쪽: 설명 */
+  column-gap: 16px;
+  row-gap: 10px;
+  margin: 0;
+}
+.skills-grid dt,
+.skills-grid dd { 
+  margin: 0; 
+  font-weight: 500;
+}
+.skills-grid dt { 
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; 
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 반응형: 좁으면 1열로 */
+@media (max-width: 640px) {
+  .skills-grid {
+    row-gap: 0px;
+  }
+  .skills-grid dt { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; 
+    align-items: center;
+    justify-content:flex-start;
+  }
+
+  .skills-grid dd { 
+    padding-left: 13px;
+    margin-bottom: 30px;
+  }
+  .skills-grid { grid-template-columns: 1fr; }
+  
+  /*
+  .skills-grid dt { order: 0; }
+  .skills-grid dd { order: 1; margin-bottom: 8px; }
+  */
 }

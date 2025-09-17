@@ -135,10 +135,13 @@ async function addCardByJson(title, containerSelector = ".scroll-box") {
     }
 
     // 키워드/태그 → 배지 변환 (keywoad 오타 대응 + tags 폴백)
-    const words = Array.isArray(project.keywoad) && project.keywoad.length
+    const words = 
+      /*Array.isArray(project.keywoad) && project.keywoad.length
       ? project.keywoad
       : (Array.isArray(project.tags) ? project.tags : []);
-
+      */
+     project.tags;
+     
     const card = createProjectCard({
       title: project.title,
       desc: project.explanation,
