@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
   <link rel="stylesheet" href="Styles/styles.css">
+  <link rel="stylesheet" href="Styles/bars.css">
+  <link rel="stylesheet" href="Styles/card.css">
   <script src="./Function/Function.js"></script>
-  <script src="./Function/AddCard.js"></script>
+  <script src="./Function/ProjectCardFunction.js"></script>
   <link rel="icon" href="./sword_icon.svg"/>
 
   <!-- meta -->
@@ -17,214 +19,99 @@
   <meta property="og:description" content="Colorful Creator & Fascinating Fantasy">
 </head>
 
-
-
-
 <body>
-  <div class="topbar">
-    <a onclick="MovePage('./index.html')">SeoPangs</a>
-    <!-- 여기에 상단 바 내용을 추가합니다. -->
-    <span style="font-weight: bold;">진예준</span>
-    <!-- 필요에 따라 추가할 수 있습니다. -->
-  </div>
-  
-
-  <div class="sidebar">
-    <a href="#Profile">Profile</a>
-    <a href="#Skill">Technical Skill</a>
-    <a href="#Project">Project</a>
-    <a href="#Awards">Awards</a>
-    <a href="#Activities">Activities</a>
-    <a>&nbsp;</a>
-    <a href="https://github.com/seopangs" target="_blank">GitHub</a>
-  </div>
-
-  <!-- 나머지 내용을 추가합니다. -->
-  <div class="content">
-    <section id="Introduce">
-      Colorful Creator & Fascinating Fantasy<br>
-      <p></p>
-      <div style="padding-left: 250px;font-size: 25px; font-weight: normal">" 다채로운 작품을 만들고<br>
-        매혹적인 판타지 세계를 만들자. "</div>
-        
-      <p style="font-size: 20px; font-weight: normal;">
-      </p>
-    </section>
-    <section id="Profile">
-      Profile
-      <div class="profile">
-        <img src="./me.jpg">
-        
-        <div>
-          <name>진예준 (JIN YE JUN)</name><br><br>
-          학교<br>
-          <school>상명대학교 게임전공 
-            <a style="font-weight: bold;">(2020.3 ~2025.2)</a>
-          </school><br><br>
-          이메일<br>
-          <email>croderknight@gmail.com</email><br><br>
-          깃허브 링크<br>
-          <a href="https://github.com/seopangs">https://github.com/seopangs</a>
-        
-        </div>
-
-    </section>
-      <br>
-    
-
-    <section id="Skill">
-      Technical Skill<!-- <a href="./Project/"><img alt="Static Badge" src="https://img.shields.io/badge/Click%20to%20Project%20-%20red?style=flat" ></a>-->
-      <p style="font-size: 15px; font-weight: normal;">
-        <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-blue?style=for-the-badge&logo=C%2B%2B">
-         Unreal Engine 프로젝트를 C++로 개발할 수 있으며, 클래스 개념을 이해하여 UML를 사용하여 다이어그램들을 작성할 수 있다.<br>
-        <img alt="C#" src="https://img.shields.io/badge/C%23-567812?style=for-the-badge&logo=C%23">
-         Unity 프로젝트를 C# 언어를 통해 개발할 수 있다.<br>
-        <img alt="Python" src="https://img.shields.io/badge/Python-blue?style=for-the-badge&logo=python&logoColor=white">
-         Pygame, sklearn, Numpy 등 라이브러리를 활용하여 게임과 프로그램들을 개발할 수 있다.<br>
-        <br>
-        <img alt="Unity" src="https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=unity&logoColor=white">
-         2D, 3D 둘다 사용하며 게임을 개발할 수 있으며, <a href="#Project">프로젝트 리스트</a>에 있는 게임을 제작할 수 있다.<br>
-        <img alt="UnrealEngine" src="https://img.shields.io/badge/Unreal%20Engine-black?style=for-the-badge&logo=unrealengine&logoColor=white">
-         C++, 블루프린트를 사용하여 게임을 개발할 수 있으며, <a href="#Project">프로젝트 리스트</a>에 있는 게임을 제작할 수 있다.<br>
-        <br>
-        <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
-        <img alt="Github" src="https://img.shields.io/badge/Github-333333?style=for-the-badge&logo=github&logoColor=white">
-        프로젝트들을 Github를 이용하여 공유하고 Branch, Pull Request, Merge, Git flow를 이해하며 능숙하게 형상관리를 할 수 있다.<br>
-        <img alt="Notion" src="https://img.shields.io/badge/Notion-555555?style=for-the-badge&logo=notion&logoColor=white">
-        노션을 통해 프로젝트 문서를 작업해왔고, 이를 통해 동료 간의 문서 공유를 할 수 있다.<br>
-        <br>
-        <!--이 부분은 뱃지를 누르면 프로젝트 리스트로 이동하도록 추후 변경 -->
-      </p>
-    </section>
-
-    <!-- 프로젝트 내용을 추가합니다. -->
-    <section id ="Project">
-      Project
-      <select id="options" onchange="updateList()">
-        <option value='null'>태그를 선택해주세요</option>
-        <option value="Unity">Unity</option>
-        <option value="UnrealEngine">Unreal Engine</option>
-        <option value="Etc">Etc</option>
-      </select>
-      <project id="projectlist">
-        <div class="container">
-          Light Up Life
-          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
-            <img src="./Project/Image/LightUpLife.png"><br>
-            <content>
-              [게임전공 과제] Unity 프로그래밍
-              <img alt="Unity" src="https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=unity&logoColor=white">
-              <img alt="C#" src="https://img.shields.io/badge/C%23-567812?style=for-the-badge&logo=C%23">
-            </content>
-          </div>
-        </div>
-        <div class="container">
-          별의 유랑
-          <div id= "1" class="box" onclick="MovePage('./Project/WanderingStars.html')">
-            <img src="./Project/Image/WanderingStars.png"><br>
-            <content>
-              [게임전공 과제]<br>
-              <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-blue?style=for-the-badge&logo=C%2B%2B">
-              <img alt="UnrealEngine" src="https://img.shields.io/badge/Unreal%20Engine-black?style=for-the-badge&logo=unrealengine&logoColor=white">
-            </content>
-          </div>
-        </div>
-        <div class="container">
-          Drive By Draw
-          <div id= "1" class="box" onclick="MovePage('./Project/DriveByDraw.html')">
-            <img src="./Project/Image/DriveByDraw.png"><br>
-            <content>
-              [게임전공 과제] Unreal Engine 4<br> 게임 프로그래밍
-              <br>
-              <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-blue?style=for-the-badge&logo=C%2B%2B">
-              <img alt="UnrealEngine" src="https://img.shields.io/badge/Unreal%20Engine-black?style=for-the-badge&logo=unrealengine&logoColor=white">
-
-            </content>
-          </div>
-        </div>
-        <!--
-        <div class="container">
-          U2U
-          <div id= "1" class="box" onclick="MovePage('./Project/LightUpLife.html')">
-            <img src="./Project/Image/U2U.png"><br>
-            <content>
-              [게임전공 과제] DB 프로그래밍
-            </content>
-          </div>
-        </div>
+    <div class="topbar">
+      <a href ="./index.html">진예준::Portfolio</a>
+      <!-- 여기에 상단 바 내용을 추가합니다. -->
+      <!--
+      <a id = small style="font-weight: bold;" href="https://github.com/seopangs" target="_blank">SeoPangs</a>
       -->
-        <div class="container">
-          꿀벌 시뮬레이션
-          <div id= "1" class="box" onclick="MovePage('./Project/BeeSimulation.html')">
-            <img src="./Project/Image/BeeSimulation.png"><br>
-            <content>
-              [게임전공 게임잼] Unity 게임 프로그래밍
-              <br>
-              <img alt="Unity" src="https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=unity&logoColor=white">
-              <img alt="C#" src="https://img.shields.io/badge/C%23-567812?style=for-the-badge&logo=C%23">
-            </content>
-          </div>
-        </div>
-        <div class="container">
-          <div style="font-size: 20px";>흔들리는 원두향에서 네 커피향이 <br>느껴진거야</div>
-          <div id= "1" class="box" onclick="MovePage('./Project/WinterGameJam2022.html')">
-            <img src="./Project/Image/WinterGameJam2022.png"><br>
-            <content>
-              [게임전공 게임잼] Unity 게임 프로그래밍
-              <br>
-              <img alt="Unity" src="https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=unity&logoColor=white">
-              <img alt="C#" src="https://img.shields.io/badge/C%23-567812?style=for-the-badge&logo=C%23">
-            </content>
-          </div>
-        </div>
-        <div class="container">
-          귤러가요
-          <div id= "1" class="box" onclick="MovePage('./Project/WinterGameJam2023.html')">
-            <img src="./Project/Image/WinterGameJam2023.png"><br>
-            <content>
-              [게임전공 게임잼] Unreal Engine 4 게임 프로그래밍
-              <br>
-              <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-blue?style=for-the-badge&logo=C%2B%2B">
-              <img alt="UnrealEngine" src="https://img.shields.io/badge/Unreal%20Engine-black?style=for-the-badge&logo=unrealengine&logoColor=white">
-            </content>
-          </div>
-        </div>        
-        </project>
-      </section>
-      <!-- 프로젝트 내용을 추가합니다. -->
-      
-      <section id="Awards">
-        Awards
-        <p style="font-size: 20px; font-weight: normal;"">
-          2022년도 2학기 상명대학교 게임개발 공모전 최우수상<br>
-          2023년도 2학기 상명대학교 게임개발 공모전 최우수상<br>
-          2023년도 1학기 상명대학교 게임전공 게임잼 우수상<br>
-          2024년도 1학기 상명대학교 게임전공 게임잼 우수상<br>
+      <!-- 필요에 따라 추가할 수 있습니다. -->
+       
+    </div>
+    
+    <div class="sidebar">
+      <a href="#Introduce">Introduce</a>
+      <a href="#Skill">Technical Skill</a>
+      <a href="#Project">Project</a>
+      <!--
+      <a href="#Awards">Awards</a>
+      <a href="#Activities">Activities</a>
+      -->
+      <a>&nbsp;</a>
+      <a href="https://github.com/seopangs" target="_blank">GitHub</a>
+    </div>
+    <div class="content">
+      <section id="Introduce">
+        <h1 style="text-align:center;">Colorful Creator & Fascinating Fantasy</h1>
+        <br>
+        <p></p>
+        <div style="text-align:center; font-size: 35px; font-weight: normal">" 다채로운 작품을 만들고<br>
+          매혹적인 판타지 세계를 만들자. "</div>
           
-  
+        <p style="font-size: 20px; font-weight: normal;">
         </p>
       </section>
-  
-      <section id="Activities">
-        Activities
-        <p style="font-size: 20px; font-weight: normal;"">
-          상명대학교 게임전공 게임제작 동아리 MODULE 부장<br>
-          2023년 상명대학교 융합공과대학 선후배이어주기<br>
-          2023년 AI융합역랑인증제 1급<br>
-          2023학년도 교육단위별 전공탐색박람회 소개 영상 제작<br>
-          2024년 상명대학교 융합공과대학 선후배이어주기
-        </p>
+      <section id="Profile">
+        <h1>Profile</h1>
+        <div class="profile">
+          <img src="./me.jpg">
+          
+          <div>
+            <name>진예준 (JIN YE JUN)</name><br><br>
+            깃허브 링크<br>
+            <a href="https://github.com/seopangs" target="_blank">https://github.com/seopangs</a>
+          
+          </div>
       </section>
-      <br><br><br>
+      <br>
+
+      <section id="Skill" aria-labelledby="skills-title">
+        <h1>Technical Skill</h1>
+        <dl class="skills-grid">
+          <dt><span class="badge C++">C++</dt>
+          <dd>STL를 이해하고 있으며, 클래스 개념과 UML을 이해하고 다이어그램을 작성할 수 있습니다.</dd>
+
+          <dt><span class="badge UnrealEngine">Unreal Engine</span></dt>
+          <dd>C++ 및 블루프린트로 게임 시스템을 구현할 수 있습니다.</dd>
+
+          <dt><span class="badge Unity">Unity</span></dt>
+          <dd>Unity 2D/3D 프로젝트를 C# 언어로 개발할 수 있습니다.</dd>
+
+          <dt><span class="badge Python">Python</span></dt>
+          <dd>Pygame, scikit-learn, NumPy 등을 활용해 게임/툴을 개발할 수 있습니다.</dd>
+
+          <dt><span class="badge git">Git</span> <span class="badge github">GitHub</span></dt>
+          <dd>Branch, PR, Merge, Git flow를 이해하고 협업 형상관리를 할 수 있습니다.</dd>
+
+          <dt><span class="badge notion">Notion</span></dt>
+          <dd>프로젝트 문서화를 수행하고 공유할 수 있습니다.</dd>
+        </dl>
+      </section>
+      <section id="Project">
+        <H1>프로젝트 리스트</H1>
+          <div class="scroll-box">
+            <!--해당 부분에 프로젝트들로 이동-->
+          </div> 
+        </section>
+     
+    </div>
     
-      <!--발표자료
-        <embed src="GitHub.pdf" type="application/pdf" width="800px" height="600px" />
-      -->
-    <!-- 페이지의 나머지 내용을 추가합니다. -->
-    HTML & CSS & JavaScript
-
-    <!--<a href="https://www.flaticon.com/kr/free-icons/" title=" 아이콘"> 아이콘 제작자: Freepik - Flaticon</a>-->
-  </div>
-
 </body>
-</html>
+
+<script> 
+  (async () => {
+    const titles = 
+      [
+        "별의 유랑", 
+        "Drive By Draw",
+        "Light Up Life",
+        "환생등용묘차",
+        "귤러가요",
+        "꿀벌 시뮬레이션"
+      ];
+    for (const t of titles) {
+      await addCardByJson(t);   // ← 하나 끝나고 다음 실행
+    }
+  })();
+</script>

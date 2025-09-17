@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로젝트 카드</title>
+  <link rel="stylesheet" href="Styles/card.css">
+
+</head>
+<body>
+
+  <h1>내 프로젝트</h1>
+  <div class="scroll-box">
+
+  </div>
+
+</body>
+<script src="./Function/ProjectCardFunction.js">
+</script>
+
+<script>
+    // 카드 넣을 컨테이너
+    const container = document.querySelector(".scroll-box");
+    // 데이터
+    const cardData = {
+    title: "AI 게임 프로젝트",
+    desc: "인공지능을 활용한 모바일 게임입니다.",
+    img: "https://seopangs.github.io/Portfolio/Project/Image/WanderingStars.png",
+    link: "https://example.com/project1",
+    badges: [
+        { text: "게임", className: "game", icon: "https://cdn-icons-png.flaticon.com/512/814/814513.png" },
+        { text: "AI", className: "ai", icon: "https://cdn-icons-png.flaticon.com/512/4712/4712100.png" },
+        { text: "모바일", className: "mobile", icon: "https://cdn-icons-png.flaticon.com/512/747/747376.png" }
+    ],
+    team: "👥 3인 팀"
+    };
+    // 생성 & 추가
+    const cardEl = createProjectCard(cardData);
+    container.appendChild(cardEl);
+</script>
+
+</html>

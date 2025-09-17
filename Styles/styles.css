@@ -1,23 +1,4 @@
-.topbar {
-    position: fixed; /* 상단 바를 고정합니다. */
-    top: 0; /* 화면 위쪽에 위치하도록 합니다. */
-    left: 0;
-    width: 100%; /* 전체 너비를 차지하도록 합니다. */
-    height: 40px;
-    background-color: #4dae7d; /* 배경색을 설정합니다. */
-    color: white; /* 텍스트 색상을 설정합니다. */
-    padding: 5px; /* 내부 여백을 추가합니다. */
-    z-index: 1000; /* 다른 요소 위에 나타나도록 합니다. */
-    
-  }
 
-  .topbar a {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-left: 20px;
-    cursor: pointer;
-  }
   
   .content {
     margin-left: 200px; /* 사이드바 너비만큼 왼쪽으로 밀어줌 */
@@ -30,7 +11,7 @@
 
   .content p {
     font-size: 17px;
-    font-weight:lighter;
+    font-weight:normal;
     margin: 0%
   }
   
@@ -38,9 +19,12 @@
     padding-top: 50px;
     position: relative;
     color: black;
-    font-size: 45px;
     font-weight: bold;
     
+  }
+  
+  section h1 { 
+    font-size: 45px;
   }
 
   section project {
@@ -150,43 +134,6 @@
   margin-right: 20px;
 }
 
-
-
-.sidebar {
-  height: 100%;
-  width: 150px; /* 사이드바의 너비 조정 */
-  position: fixed; /* 페이지 스크롤과 상관없이 고정 */
-  top: 50px; 
-  left: 0;
-  background-color: #09431f;
-  padding-top: 20px;
-}
-
-.sidebar a {
-  padding: 10px;
-  text-decoration: none;
-  font-size: 18px;
-  color: white;
-  display: block; /* 링크를 블록 수준 요소로 만들어 전체 너비 사용 */
-}
-
-.sidebar a:hover {
-  background-color: #4f7f68;
-}
-
-
-@media screen and (max-width: 850px) {
-  .sidebar {
-    width: 100%; /* 작은 화면에서는 사이드바가 전체 너비를 차지하도록 함 */
-    z-index: 1; /* 다른 콘텐츠 위로 올라오도록 설정 */
-    display: none; /* 작은 화면에서는 사이드바를 숨김 */
-  }
-  .content {
-    margin-left: 15px; /* 작은 화면에서는 본문을 왼쪽으로 밀어내지 않음 */
-  }
-}
-
-
  table{ border-collapse : collapse; }  /*이중선 제거*/
  th,td
  {
@@ -241,4 +188,51 @@
 .hidden
 {
   display: none;
+}
+
+/* 레이아웃 */
+.skills-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr; /* 왼쪽: 배지, 오른쪽: 설명 */
+  column-gap: 16px;
+  row-gap: 10px;
+  margin: 0;
+}
+.skills-grid dt,
+.skills-grid dd { 
+  margin: 0; 
+  font-weight: 500;
+}
+.skills-grid dt { 
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; 
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 반응형: 좁으면 1열로 */
+@media (max-width: 640px) {
+  .skills-grid {
+    row-gap: 0px;
+  }
+  .skills-grid dt { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; 
+    align-items: center;
+    justify-content:flex-start;
+  }
+
+  .skills-grid dd { 
+    padding-left: 13px;
+    margin-bottom: 30px;
+  }
+  .skills-grid { grid-template-columns: 1fr; }
+  
+  /*
+  .skills-grid dt { order: 0; }
+  .skills-grid dd { order: 1; margin-bottom: 8px; }
+  */
 }
