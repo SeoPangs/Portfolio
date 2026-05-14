@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio UI</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.13);
+      --text: #eef2ff;
+      --muted: #9ca3af;
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --card-radius: 24px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.36), transparent 34%),
+        radial-gradient(circle at 85% 12%, rgba(34, 211, 238, 0.26), transparent 30%),
+        linear-gradient(180deg, #090d1a 0%, var(--bg) 42%, #070912 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 9, 18, 0.62);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 32px rgba(139, 92, 246, 0.32);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 42px;
+      align-items: center;
+      padding: 72px 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      margin-bottom: 22px;
+      color: #c4b5fd;
+      border: 1px solid rgba(196, 181, 253, 0.22);
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.11);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 16px #22c55e;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.94;
+      letter-spacing: -0.085em;
+      margin-bottom: 26px;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(90deg, #fff, #c4b5fd 42%, #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      padding: 0 22px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 18px 42px rgba(34, 211, 238, 0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .profile-card {
+      position: relative;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(circle at 30% 0%, rgba(139, 92, 246, 0.38), transparent 36%);
+      pointer-events: none;
+    }
+
+    .profile-inner {
+      position: relative;
+      min-height: 560px;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(8, 13, 30, 0.25), rgba(8, 13, 30, 0.88)),
+        linear-gradient(135deg, rgba(139,92,246,0.42), rgba(34,211,238,0.24));
+      overflow: hidden;
+      padding: 28px;
+    }
+
+    .avatar {
+      position: absolute;
+      right: -50px;
+      bottom: -40px;
+      width: 360px;
+      height: 360px;
+      border-radius: 44% 56% 46% 54%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85), transparent 10%),
+        linear-gradient(135deg, #a78bfa, #22d3ee 54%, #0f172a);
+      filter: saturate(1.1);
+      opacity: 0.92;
+    }
+
+    .floating-panel {
+      position: relative;
+      z-index: 1;
+      width: min(320px, 100%);
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 22px;
+      background: rgba(8, 13, 30, 0.58);
+      backdrop-filter: blur(20px);
+    }
+
+    .floating-panel h2 {
+      font-size: 28px;
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
+    }
+
+    .floating-panel p {
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .stats {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      right: 28px;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 20px;
+      background: rgba(8, 13, 30, 0.62);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.05em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.07em;
+    }
+
+    .section-head p {
+      max-width: 460px;
+      color: var(--muted);
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      position: relative;
+      min-height: 380px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--panel);
+      overflow: hidden;
+      transition: 0.22s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      background: var(--panel-strong);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.72;
+      background: radial-gradient(circle at 40% 20%, var(--glow), transparent 34%);
+      pointer-events: none;
+    }
+
+    .project > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project.large {
+      grid-column: span 2;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #dbeafe;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .project h3 {
+      font-size: 28px;
+      letter-spacing: -0.055em;
+      margin-bottom: 12px;
+    }
+
+    .project p {
+      color: #cbd5e1;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .project-link {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      color: white;
+      font-weight: 900;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--panel);
+    }
+
+    .panel h3 {
+      font-size: 24px;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .skill-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-item {
+      display: grid;
+      grid-template-columns: 120px 1fr 44px;
+      align-items: center;
+      gap: 14px;
+      color: #dbeafe;
+      font-weight: 800;
+    }
+
+    .bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .time-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .time-card .year {
+      color: #c4b5fd;
+      font-weight: 900;
+    }
+
+    .time-card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .time-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact {
+      padding: 48px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(139,92,246,0.26), transparent 32%),
+        radial-gradient(circle at 90% 30%, rgba(34,211,238,0.18), transparent 28%),
+        rgba(255,255,255,0.07);
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(34px, 6vw, 68px);
+      letter-spacing: -0.08em;
+      margin-bottom: 18px;
+    }
+
+    .contact p {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: #cbd5e1;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    footer {
+      padding: 32px 0 52px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero,
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-inner {
+        min-height: 480px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project.large {
+        grid-column: span 1;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 44px 0;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .profile-inner {
+        min-height: 520px;
+        padding: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .avatar {
+        width: 280px;
+        height: 280px;
+      }
+
+      .skill-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .time-card {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        padding: 34px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header>
+    <nav class="wrap nav">
+      <a href="#top" class="brand">
+        <span class="brand-mark">P</span>
+        <span>Portfolio</span>
+      </a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Available for collaboration</div>
+        <h1>게임과 웹을 설계하는 <span class="gradient-text">Creative Developer</span></h1>
+        <p>
+          시스템 구현, 인터랙션 설계, 프로토타이핑을 중심으로 완성도 있는 사용자 경험을 만듭니다.
+          기획 의도를 기능으로 번역하고, 보기 좋은 결과물로 정리하는 데 집중합니다.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="button primary">프로젝트 보기</a>
+          <a href="#contact" class="button">연락하기</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="profile-inner">
+          <div class="floating-panel">
+            <h2>Jin Yejun</h2>
+            <p>Game Client · Unreal Engine · Web Prototype · UI/UX Implementation</p>
+          </div>
+          <div class="avatar"></div>
+          <div class="stats">
+            <div class="stat">
+              <strong>12+</strong>
+              <span>PROJECTS</span>
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              <span>GAME TYPES</span>
+            </div>
+            <div class="stat">
+              <strong>98%</strong>
+              <span>FOCUS</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects" class="wrap">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>핵심 역량이 보이도록 대표 프로젝트를 카드형으로 배치했습니다. 썸네일 이미지 없이도 시각적 완성도가 나오도록 구성했습니다.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project large" style="--glow: rgba(139,92,246,0.38);">
+          <div>
+            <div class="tag-row">
+              <span class="tag">Unreal Engine</span>
+              <span class="tag">Gameplay System</span>
+              <span class="tag">C++</span>
+            </div>
+            <h3>Sword Generator System</h3>
+            <p>손잡이, 가드, 날 파트를 실시간으로 조합하여 검을 생성하는 모듈형 시스템입니다. 데이터 기반 구조로 확장성과 유지보수성을 확보했습니다.</p>
+          </div>
+          <a class="project-link" href="#">Case Study →</a>
+        </article>
+
+        <article class="project" style="--glow: rgba(34,211,238,0.30);">
+          <div>
+            <div class="tag-row">
+              <span class="tag">HTML</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <h3>Monster Battle Prototype</h3>
+            <p>맵 이동, 턴제 전투, 포획, 스킬 쿨다운을 포함한 포켓몬 스타일 로컬 게임 프로토타입입니다.</p>
+          </div>
+          <a class="project-link" href="#">View Project →</a>
+        </article>
+
+        <article class="project" style="--glow: rgba(244,114,182,0.28);">
+          <div>
+            <div class="tag-row">
+              <span class="tag">Network</span>
+              <span class="tag">Mobile</span>
+            </div>
+            <h3>Android Controller</h3>
+            <p>모바일 기기를 PC 게임 컨트롤러로 활용하는 무선 입력 시스템입니다. 아날로그 패드와 버튼 입력을 실시간으로 전달합니다.</p>
+          </div>
+          <a class="project-link" href="#">Details →</a>
+        </article>
+
+        <article class="project large" style="--glow: rgba(59,130,246,0.34);">
+          <div>
+            <div class="tag-row">
+              <span class="tag">Game Design</span>
+              <span class="tag">Worldbuilding</span>
+              <span class="tag">UI</span>
+            </div>
+            <h3>Chromythe World Framework</h3>
+            <p>색채와 신화를 중심으로 한 세계관 프레임워크입니다. 브랜드, 내러티브, 게임 시스템으로 확장 가능한 구조를 목표로 설계했습니다.</p>
+          </div>
+          <a class="project-link" href="#">Explore →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="wrap">
+      <div class="section-head">
+        <h2>Core Skills</h2>
+        <p>포트폴리오에서는 기술명을 나열하기보다, 어떤 결과물을 만들 수 있는지와 함께 보여주는 구성이 좋습니다.</p>
+      </div>
+
+      <div class="skills">
+        <div class="panel">
+          <h3>Profile Summary</h3>
+          <p>
+            게임 클라이언트 구현과 프로토타입 제작에 강점을 가진 개발자입니다. 시스템 구조를 먼저 잡고,
+            이후 연출과 사용성을 개선하는 방식으로 작업합니다.
+          </p>
+        </div>
+
+        <div class="panel skill-list">
+          <div class="skill-item">
+            <span>Unreal C++</span>
+            <div class="bar"><span style="width: 84%"></span></div>
+            <span>84</span>
+          </div>
+          <div class="skill-item">
+            <span>Gameplay</span>
+            <div class="bar"><span style="width: 88%"></span></div>
+            <span>88</span>
+          </div>
+          <div class="skill-item">
+            <span>HTML/CSS</span>
+            <div class="bar"><span style="width: 82%"></span></div>
+            <span>82</span>
+          </div>
+          <div class="skill-item">
+            <span>UI Design</span>
+            <div class="bar"><span style="width: 76%"></span></div>
+            <span>76</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p>경험 섹션은 연표형으로 구성하면 성장 과정과 프로젝트 흐름을 빠르게 읽을 수 있습니다.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="time-card">
+          <div class="year">2026</div>
+          <div>
+            <h3>Unreal Engine Gameplay Systems</h3>
+            <p>캐릭터, 입력, 아이템 조합, 네트워크 기반 시스템 구조를 실험하고 구현했습니다.</p>
+          </div>
+        </div>
+        <div class="time-card">
+          <div class="year">2025</div>
+          <div>
+            <h3>Web Game Prototype Development</h3>
+            <p>HTML, CSS, JavaScript 기반으로 전투와 탐험이 가능한 로컬 게임 프로토타입을 제작했습니다.</p>
+          </div>
+        </div>
+        <div class="time-card">
+          <div class="year">2024</div>
+          <div>
+            <h3>Interactive Game Concept Design</h3>
+            <p>스트리머와 시청자가 함께 참여하는 채팅 연동형 게임 경험을 기획했습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap">
+      <div class="contact">
+        <h2>Let’s Build Something Clear.</h2>
+        <p>
+          프로젝트 제안, 협업, 포트폴리오 리뷰가 필요하다면 아래 버튼을 메일 또는 GitHub 링크로 교체해서 사용하면 됩니다.
+        </p>
+        <a href="mailto:your-email@example.com" class="button primary">메일 보내기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    © 2026 Portfolio. Designed and built with HTML & CSS.
+  </footer>
+</body>
+</html>
