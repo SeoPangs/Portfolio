@@ -105,126 +105,7 @@
         </p>
       </div>
 
-      <div class="project-list">
-        <a class="project-card featured reveal" href="project-action-rpg.html" aria-label="모듈형 액션 RPG 전투 시스템 상세 페이지 보기">
-          <div class="project-image project-image-one">
-            <div class="project-overlay">
-              <span>01</span>
-              <p>Action RPG Combat Prototype</p>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-meta">
-              <span>개인 프로젝트</span>
-              <span>2026</span>
-            </div>
-            <h3>모듈형 액션 RPG 전투 시스템</h3>
-            <p>
-              GAS 기반 스킬, 콤보, 피격, 상태 이상을 데이터 중심으로 구성한
-              액션 RPG 프로토타입입니다. 캐릭터별 로직 중복을 줄이고,
-              신규 스킬을 에디터에서 조합할 수 있도록 설계했습니다.
-            </p>
-
-            <div class="tech-tags">
-              <span>Unreal Engine 5</span>
-              <span>C++</span>
-              <span>GAS</span>
-              <span>Animation Montage</span>
-            </div>
-
-            <ul class="project-points">
-              <li>GameplayTag 기반 공격 상태 및 입력 버퍼 구현</li>
-              <li>AbilityTask를 활용한 애니메이션 이벤트 동기화</li>
-              <li>데이터 에셋 기반 스킬 생성 파이프라인 구축</li>
-            </ul>
-
-            <div class="project-links" aria-hidden="true">
-              <span>상세 보기 ↗</span>
-              <span>GitHub</span>
-              <span>Demo</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card reveal" href="project-board-game.html" aria-label="온라인 파티 보드게임 상세 페이지 보기">
-          <div class="project-image project-image-two">
-            <div class="project-overlay">
-              <span>02</span>
-              <p>Party Board Game</p>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-meta">
-              <span>팀 프로젝트 · 3인</span>
-              <span>2026</span>
-            </div>
-            <h3>온라인 파티 보드게임</h3>
-            <p>
-              서버 권한 기반 턴 진행, 주사위 이동, 미니게임 전환을 구현한
-              멀티플레이 보드게임입니다.
-            </p>
-
-            <div class="tech-tags">
-              <span>Replication</span>
-              <span>RPC</span>
-              <span>GameMode</span>
-              <span>UMG</span>
-            </div>
-
-            <ul class="project-points">
-              <li>서버 권한형 턴 매니저 및 플레이어 상태 동기화</li>
-              <li>보드 노드 기반 경로 선택과 이동 시스템 구현</li>
-              <li>재접속을 고려한 게임 상태 복원 구조 설계</li>
-            </ul>
-
-            <div class="project-links" aria-hidden="true">
-              <span>상세 보기 ↗</span>
-              <span>GitHub</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card reveal" href="project-mobile-controller.html" aria-label="모바일 연동 PC 게임 컨트롤러 상세 페이지 보기">
-          <div class="project-image project-image-three">
-            <div class="project-overlay">
-              <span>03</span>
-              <p>Mobile Remote Controller</p>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-meta">
-              <span>개인 프로젝트</span>
-              <span>2025</span>
-            </div>
-            <h3>모바일 연동 PC 게임 컨트롤러</h3>
-            <p>
-              Android 기기의 가상 패드 입력을 무선으로 PC 게임에 전달하는
-              네트워크 입력 시스템입니다.
-            </p>
-
-            <div class="tech-tags">
-              <span>UDP</span>
-              <span>Android</span>
-              <span>Enhanced Input</span>
-              <span>Networking</span>
-            </div>
-
-            <ul class="project-points">
-              <li>저지연 UDP 패킷 구조와 입력 보간 처리</li>
-              <li>기기 연결 상태 및 타임아웃 예외 처리</li>
-              <li>입력 매핑을 교체 가능한 컴포넌트로 분리</li>
-            </ul>
-
-            <div class="project-links" aria-hidden="true">
-              <span>상세 보기 ↗</span>
-              <span>GitHub</span>
-            </div>
-          </div>
-        </a>
-      </div>
+      <div class="project-list" id="project-list"></div>
     </section>
 
     <section class="section skills-section" id="skills">
@@ -378,6 +259,7 @@
     <a href="#home">Back to top ↑</a>
   </footer>
 
+  <script src="portfolio-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

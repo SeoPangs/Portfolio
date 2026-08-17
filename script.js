@@ -31,7 +31,9 @@ const observer = new IntersectionObserver(
   { threshold: 0.12 }
 );
 
-document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+const observeReveals = () => document.querySelectorAll(".reveal:not([data-observed])").forEach((element) => { element.dataset.observed = "true"; observer.observe(element); });
+observeReveals();
+window.addEventListener("portfolioRendered", observeReveals);
 
 window.addEventListener("mousemove", (event) => {
   if (!glow) return;
