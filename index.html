@@ -1,108 +1,383 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="Styles/styles.css">
-  <link rel="stylesheet" href="Styles/bars.css">
-  <link rel="stylesheet" href="Styles/card.css">
-  <script src="./Function/Function.js"></script>
-  <script src="./Function/ProjectCardFunction.js"></script>
-  <link rel="icon" href="./sword_icon.svg"/>
-
-  <!-- meta -->
-  <meta property="og:title" content="진예준 포트폴리오">
-  <meta property="og:url" content="//seopangs.github.io/Portfolio/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="./jyj.png">
-  <meta property="og:description" content="Colorful Creator & Fascinating Fantasy">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="언리얼 엔진 게임 프로그래머 포트폴리오" />
+  <title>Jin Yejun | Game Programmer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div class="topbar">
-      <a href ="./index.html">진예준::Portfolio</a>
-      <!-- 여기에 상단 바 내용을 추가합니다. -->
-      <!--
-      <a id = small style="font-weight: bold;" href="https://github.com/seopangs" target="_blank">SeoPangs</a>
-      -->
-      <!-- 필요에 따라 추가할 수 있습니다. -->
-       
-    </div>
-    
-    <div class="sidebar">
-      <a href="#Introduce">Introduce</a>
-      <a href="#Skill">Technical Skill</a>
-      <a href="#Project">Project</a>
-      <!--
-      <a href="#Awards">Awards</a>
-      <a href="#Activities">Activities</a>
-      -->
-      <a>&nbsp;</a>
-      <a href="https://github.com/seopangs" target="_blank">GitHub</a>
-    </div>
-    <div class="content">
-      <section id="Introduce">
-      </section>
-      <section id="Profile" style="padding-top: 0px;">
-        <h1>Profile</h1>
-        <div class="profile">
-          <img src="./me.jpg">
-          
-          <div>
-            <name>진예준 (JIN YE JUN)</name><br><br>
-            깃허브 링크<br>
-            <a href="https://github.com/seopangs" target="_blank">https://github.com/seopangs</a>
-          
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="홈으로 이동">
+      <span class="logo-mark">JY</span>
+      <span class="logo-text">GAME PROGRAMMER</span>
+    </a>
+
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">UNREAL ENGINE · C++ · GAMEPLAY SYSTEMS</p>
+        <h1>
+          플레이 감각을<br />
+          <span>시스템으로 구현하는</span><br />
+          게임 프로그래머
+        </h1>
+        <p class="hero-description">
+          Unreal Engine 5와 C++를 기반으로 전투, 상호작용, 멀티플레이,
+          툴 제작을 구현합니다. 단순히 기능을 만드는 데서 끝나지 않고,
+          디자이너가 반복 작업하기 쉬운 구조까지 설계합니다.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">프로젝트 보기</a>
+          <a class="button button-secondary" href="assets/resume-placeholder.pdf" download>이력서 다운로드</a>
+        </div>
+
+        <ul class="hero-stats" aria-label="핵심 요약">
+          <li><strong>4+</strong><span>완성 프로젝트</span></li>
+          <li><strong>UE5</strong><span>주력 엔진</span></li>
+          <li><strong>C++</strong><span>주력 언어</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="code-window">
+          <div class="window-bar">
+            <span></span><span></span><span></span>
+            <p>CombatComponent.cpp</p>
           </div>
-      </section>
-      <br>
+          <pre><code><span class="code-muted">// Gameplay Ability activation</span>
+<span class="code-keyword">void</span> UCombatComponent::TryAttack()
+{
+    <span class="code-keyword">if</span> (!CanAttack()) <span class="code-keyword">return</span>;
 
-      <section id="Skill" aria-labelledby="skills-title">
-        <h1>Technical Skill</h1>
-        <dl class="skills-grid">
-          <dt><span class="badge C++">C++</dt>
-          <dd>STL를 이해하고 있으며, 클래스 개념과 UML을 이해하고 다이어그램을 작성할 수 있습니다.</dd>
+    FGameplayEventData EventData;
+    EventData.EventTag = AttackTag;
 
-          <dt><span class="badge UnrealEngine">Unreal Engine</span></dt>
-          <dd>C++ 및 블루프린트로 게임 시스템을 구현할 수 있습니다.</dd>
+    UAbilitySystemBlueprintLibrary::
+        SendGameplayEventToActor(
+            GetOwner(),
+            AttackTag,
+            EventData
+        );
+}</code></pre>
+        </div>
 
-          <dt><span class="badge Unity">Unity</span></dt>
-          <dd>Unity 2D/3D 프로젝트를 C# 언어로 개발할 수 있습니다.</dd>
+        <div class="floating-card card-engine">
+          <span>ENGINE</span>
+          <strong>Unreal Engine 5</strong>
+        </div>
 
-          <dt><span class="badge Python">Python</span></dt>
-          <dd>Pygame, scikit-learn, NumPy 등을 활용해 게임/툴을 개발할 수 있습니다.</dd>
+        <div class="floating-card card-focus">
+          <span>FOCUS</span>
+          <strong>Gameplay Systems</strong>
+        </div>
+      </div>
+    </section>
 
-          <dt><span class="badge git">Git</span> <span class="badge github">GitHub</span></dt>
-          <dd>Branch, PR, Merge, Git flow를 이해하고 협업 형상관리를 할 수 있습니다.</dd>
+    <section class="section projects-section" id="projects">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">SELECTED WORK</p>
+          <h2>주요 프로젝트</h2>
+        </div>
+        <p>
+          결과 화면보다 구현 과정과 기술적 판단을 중심으로 정리했습니다.
+          각 프로젝트에서 제가 담당한 범위와 해결한 문제를 확인할 수 있습니다.
+        </p>
+      </div>
 
-          <dt><span class="badge notion">Notion</span></dt>
-          <dd>프로젝트 문서화를 수행하고 공유할 수 있습니다.</dd>
-        </dl>
-      </section>
-      <section id="Project">
-        <H1>프로젝트 리스트</H1>
-          <div class="scroll-box">
-            <!--해당 부분에 프로젝트들로 이동-->
-          </div> 
-        </section>
-     
-    </div>
-    
+      <div class="project-list">
+        <a class="project-card featured reveal" href="project-action-rpg.html" aria-label="모듈형 액션 RPG 전투 시스템 상세 페이지 보기">
+          <div class="project-image project-image-one">
+            <div class="project-overlay">
+              <span>01</span>
+              <p>Action RPG Combat Prototype</p>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <div class="project-meta">
+              <span>개인 프로젝트</span>
+              <span>2026</span>
+            </div>
+            <h3>모듈형 액션 RPG 전투 시스템</h3>
+            <p>
+              GAS 기반 스킬, 콤보, 피격, 상태 이상을 데이터 중심으로 구성한
+              액션 RPG 프로토타입입니다. 캐릭터별 로직 중복을 줄이고,
+              신규 스킬을 에디터에서 조합할 수 있도록 설계했습니다.
+            </p>
+
+            <div class="tech-tags">
+              <span>Unreal Engine 5</span>
+              <span>C++</span>
+              <span>GAS</span>
+              <span>Animation Montage</span>
+            </div>
+
+            <ul class="project-points">
+              <li>GameplayTag 기반 공격 상태 및 입력 버퍼 구현</li>
+              <li>AbilityTask를 활용한 애니메이션 이벤트 동기화</li>
+              <li>데이터 에셋 기반 스킬 생성 파이프라인 구축</li>
+            </ul>
+
+            <div class="project-links" aria-hidden="true">
+              <span>상세 보기 ↗</span>
+              <span>GitHub</span>
+              <span>Demo</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="project-card reveal" href="project-board-game.html" aria-label="온라인 파티 보드게임 상세 페이지 보기">
+          <div class="project-image project-image-two">
+            <div class="project-overlay">
+              <span>02</span>
+              <p>Party Board Game</p>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <div class="project-meta">
+              <span>팀 프로젝트 · 3인</span>
+              <span>2026</span>
+            </div>
+            <h3>온라인 파티 보드게임</h3>
+            <p>
+              서버 권한 기반 턴 진행, 주사위 이동, 미니게임 전환을 구현한
+              멀티플레이 보드게임입니다.
+            </p>
+
+            <div class="tech-tags">
+              <span>Replication</span>
+              <span>RPC</span>
+              <span>GameMode</span>
+              <span>UMG</span>
+            </div>
+
+            <ul class="project-points">
+              <li>서버 권한형 턴 매니저 및 플레이어 상태 동기화</li>
+              <li>보드 노드 기반 경로 선택과 이동 시스템 구현</li>
+              <li>재접속을 고려한 게임 상태 복원 구조 설계</li>
+            </ul>
+
+            <div class="project-links" aria-hidden="true">
+              <span>상세 보기 ↗</span>
+              <span>GitHub</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="project-card reveal" href="project-mobile-controller.html" aria-label="모바일 연동 PC 게임 컨트롤러 상세 페이지 보기">
+          <div class="project-image project-image-three">
+            <div class="project-overlay">
+              <span>03</span>
+              <p>Mobile Remote Controller</p>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <div class="project-meta">
+              <span>개인 프로젝트</span>
+              <span>2025</span>
+            </div>
+            <h3>모바일 연동 PC 게임 컨트롤러</h3>
+            <p>
+              Android 기기의 가상 패드 입력을 무선으로 PC 게임에 전달하는
+              네트워크 입력 시스템입니다.
+            </p>
+
+            <div class="tech-tags">
+              <span>UDP</span>
+              <span>Android</span>
+              <span>Enhanced Input</span>
+              <span>Networking</span>
+            </div>
+
+            <ul class="project-points">
+              <li>저지연 UDP 패킷 구조와 입력 보간 처리</li>
+              <li>기기 연결 상태 및 타임아웃 예외 처리</li>
+              <li>입력 매핑을 교체 가능한 컴포넌트로 분리</li>
+            </ul>
+
+            <div class="project-links" aria-hidden="true">
+              <span>상세 보기 ↗</span>
+              <span>GitHub</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">TECHNICAL STACK</p>
+          <h2>기술 역량</h2>
+        </div>
+        <p>
+          실제 프로젝트에서 사용한 기술을 숙련도와 활용 경험 중심으로 구분했습니다.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card reveal">
+          <span class="skill-number">01</span>
+          <h3>Gameplay Programming</h3>
+          <p>전투, 상호작용, AI, 캐릭터 상태 및 데이터 중심 시스템 설계</p>
+          <div class="skill-list">
+            <span>Unreal C++</span>
+            <span>Blueprint</span>
+            <span>Gameplay Ability System</span>
+            <span>Enhanced Input</span>
+            <span>Behavior Tree</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <span class="skill-number">02</span>
+          <h3>Multiplayer</h3>
+          <p>서버 권한 구조를 기준으로 한 게임 상태와 액터 동기화</p>
+          <div class="skill-list">
+            <span>Replication</span>
+            <span>RPC</span>
+            <span>Dedicated Server</span>
+            <span>Session</span>
+            <span>Lobby</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <span class="skill-number">03</span>
+          <h3>Architecture & Tools</h3>
+          <p>유지보수성과 협업 효율을 고려한 모듈화 및 에디터 도구 제작</p>
+          <div class="skill-list">
+            <span>Design Pattern</span>
+            <span>Data Asset</span>
+            <span>Subsystem</span>
+            <span>Editor Utility</span>
+            <span>Git</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section case-section" id="experience">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">PROBLEM SOLVING</p>
+          <h2>문제 해결 사례</h2>
+        </div>
+        <p>
+          구현 결과만 나열하지 않고, 어떤 문제가 있었고 어떤 판단으로 해결했는지 설명합니다.
+        </p>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card reveal">
+          <div class="case-header">
+            <span>CASE 01</span>
+            <strong>멀티플레이 이동 불일치</strong>
+          </div>
+          <div class="case-body">
+            <div>
+              <h4>문제</h4>
+              <p>보드게임 이동 중 클라이언트마다 캐릭터 위치가 달라지는 현상이 발생했습니다.</p>
+            </div>
+            <div>
+              <h4>원인</h4>
+              <p>각 클라이언트가 자체 보간을 수행하고 이동 종료 시점을 개별 판정하고 있었습니다.</p>
+            </div>
+            <div>
+              <h4>해결</h4>
+              <p>서버가 이동 경로와 시작 시간을 확정하고, 클라이언트는 동일한 타임라인을 재생하도록 변경했습니다.</p>
+            </div>
+            <div class="case-result">
+              <span>RESULT</span>
+              <strong>위치 오차 평균 42cm → 3cm 이하</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-header">
+            <span>CASE 02</span>
+            <strong>스킬 코드 중복 증가</strong>
+          </div>
+          <div class="case-body">
+            <div>
+              <h4>문제</h4>
+              <p>캐릭터가 늘어날수록 공격 스킬 클래스와 예외 분기가 빠르게 증가했습니다.</p>
+            </div>
+            <div>
+              <h4>원인</h4>
+              <p>공격 판정, 이펙트, 자원 소모가 하나의 클래스에 강하게 결합되어 있었습니다.</p>
+            </div>
+            <div>
+              <h4>해결</h4>
+              <p>공통 실행 흐름은 Ability에 두고 세부 동작을 데이터와 태스크 조합으로 분리했습니다.</p>
+            </div>
+            <div class="case-result">
+              <span>RESULT</span>
+              <strong>신규 스킬 제작 시간 약 50% 감소</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about-section">
+      <div class="about-card reveal">
+        <div>
+          <p class="eyebrow">ABOUT ME</p>
+          <h2>기획 의도를 기술 구조로 번역합니다.</h2>
+        </div>
+        <p>
+          게임 규칙을 이해하고, 이를 디자이너가 조정 가능한 시스템으로 만드는 데 관심이 많습니다.
+          기능 구현 속도뿐 아니라 디버깅 가능성, 확장성, 협업 효율까지 고려합니다.
+          현재는 액션 RPG의 전투 구조와 멀티플레이 아키텍처를 집중적으로 학습하고 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="contact-card reveal">
+        <p class="eyebrow">CONTACT</p>
+        <h2>함께 만들 기회를 찾고 있습니다.</h2>
+        <p>게임플레이 프로그래머 또는 언리얼 엔진 클라이언트 프로그래머 포지션에 지원하고 있습니다.</p>
+
+        <div class="contact-links">
+          <a href="mailto:example@email.com">example@email.com ↗</a>
+          <a href="#">GitHub ↗</a>
+          <a href="#">Blog ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Jin Yejun. Built with HTML, CSS and JavaScript.</p>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
-<script> 
-  (async () => {
-    const titles = 
-      [
-        "별의 유랑", 
-        "Drive By Draw",
-        "Light Up Life",
-        "귤러가요",
-        "꿀벌 시뮬레이션"
-      ];
-    for (const t of titles) {
-      await addCardByJson(t);   // ← 하나 끝나고 다음 실행
-    }
-  })();
-</script>
+</html>
