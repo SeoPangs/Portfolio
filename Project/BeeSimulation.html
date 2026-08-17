@@ -1,108 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꿀벌 시뮬레이션</title>
-    <link rel="stylesheet" href="../Styles/styles.css">
-    <link rel="stylesheet" href="../Styles/bars.css">
-    <link rel="stylesheet" href="../Styles/card.css">
-    <script src="../Function/Function.js"></script>
-</head>
-<body>
-    <div class="topbar">
-        <a onclick="MovePage('../index.html')">SeoPangs</a>
-        <!-- 여기에 상단 바 내용을 추가합니다. -->
-        <span style="font-weight: bold;">Project</span>
-        <!--<button class="button" onclick="MovePage('https://github.com/seopangs')">GitHub</button>-->
-        <!-- 필요에 따라 추가할 수 있습니다. -->
-       
-      </div>
-    
-      <div class="sidebar">
-        <a href="../index.html#Introduce">Introduce</a>
-        <a href="../index.html#Skill">Technical Skill</a>
-        <a href="../index.html#Project">Project</a>
-        <a>&nbsp;</a>
-        <a href="https://github.com/seopangs" target="_blank">GitHub</a>
-      </div>
-    
-
-    <div class="content">
-        <section>
-        <div class="project_title">
-            꿀벌 시뮬레이션
-        </div> 
-        
-        <p>
-            Unity를 이용한 3D 비행체 이동 게임<br>
-            게임잼 주제: 향기, 지구, 금지
-        </p>
-        <img src="./Image/BeeSimulation.png" alt="프로젝트 이미지" width=500px">
-        <iframe width="500" height="280" src="https://www.youtube.com/embed/IcxBWkvtPK4?si=hgCWu8fUXFnyWfVS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <br>
-        <p>
-            <subtitle>기간</subtitle><br>
-            <p>
-                2023-6-22 ~ 2023-6-23
-            </p>
-            <subtitle>사용된 기술</subtitle><br>
-            <p>
-                Unity, C#
-            </p>
-            <subtitle>팀 구성</subtitle><br>
-            <p>
-                4명
-            </p>
-            <subtitle>맡은 역할</subtitle><br>
-            <p>
-                게임 기획, 게임 프로그래밍
-            </p>
-            <subtitle>관련 활동</subtitle><br>
-            <p>
-                상명대학교 게임전공 게임잼
-            </p>
-            
-        </p>
-        <br>
-        <subtitle>프로젝트 소개 </subtitle>
-        <p>
-            벌이 사랑하는 꽃을 찾는 게임이다.<br>
-            자신의 몸을 부딛히는 것을 통해 꽃을 획득할 수도 있고 쓰레기를 부술 수도 있다<br>
-            쓰레기들을 제거해가며 꽃을 모으면 엔딩을 볼 수 있다.<br>
-            비를 피해 행동이 제약되는 것을 조심하며, 비가 올 때 움직이지 말아야 한다.<br>
-            
-        </p>
-        <br>
-        
-        <p>
-            <subtitle>프로젝트에 기여한 역할</subtitle>
-            <p>
-                <br>
-                <subtitle>기획</subtitle><br>
-                벌 게임 기획<br>
-                <br>
-                <subtitle>개발</subtitle><br>
-                플레이어블 캐릭터: 벌 개발<br>
-                3차원 벡터를 통해 3D 물리 제어<br>
-                날개 애니메이션 제작<br>
-
-            </p>
-            <br>
-            
-            <subtitle>프로젝트를 진행하며 느낀 내용 </subtitle>
-            <p>
-                한정된 주제로 게임을 만드는 것이 제일 힘들었다.<br>
-                3D 이동을 구현하면서 3D 개발에 더욱 흥미가 가서 3차원 벡터들을 활용하는 게임을 제작하고 싶다.<br>
-            </p>
-            <br><br>
-
-            
-        </p>
-    </section>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="꿀벌 시뮬레이션 프로젝트 상세 설명">
+    <title>
+      꿀벌 시뮬레이션 | Jin Yejun
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true">
     </div>
-    
-   
-</body>
+    <header class="site-header">
+      <a class="logo" href="../index.html">
+        <span class="logo-mark">
+          JY
+        </span>
+        <span class="logo-text">
+          GAME PROGRAMMER
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="../index.html#projects">
+          Projects
+        </a>
+        <a href="../index.html#skills">
+          Skills
+        </a>
+        <a href="../index.html#contact">
+          Contact
+        </a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+        <span>
+        </span>
+        <span>
+        </span>
+      </button>
+    </header>
+    <main class="detail-main" id="project-detail">
+    </main>
+    <footer>
+      <p data-profile-copyright>
+        © 2026 Jin Yejun. Game Programmer Portfolio.
+      </p>
+      <a href="../index.html">
+        Portfolio Home ↑
+      </a>
+    </footer>
+    <script src="detail-page.js">
+    </script>
+    <script src="../profile-data.js">
+    </script>
+    <script src="../script.js">
+    </script>
+  </body>
 </html>
-

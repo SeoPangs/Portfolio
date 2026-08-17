@@ -1,93 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>귤러가요</title>
-    <link rel="stylesheet" href="../Styles/styles.css">
-    <link rel="stylesheet" href="../Styles/bars.css">
-    <link rel="stylesheet" href="../Styles/card.css">
-    <script src="../Function/Function.js"></script>
-</head>
-<body>
-    <div class="topbar">
-        <a onclick="MovePage('../index.html')">SeoPangs</a>
-        <!-- 여기에 상단 바 내용을 추가합니다. -->
-        <span style="font-weight: bold;">Project</span>
-        <!--<button class="button" onclick="MovePage('https://github.com/seopangs')">GitHub</button>-->
-        <!-- 필요에 따라 추가할 수 있습니다. -->
-       
-      </div>
-    
-      <div class="sidebar">
-        <a href="../index.html#Introduce">Introduce</a>
-        <a href="../index.html#Skill">Technical Skill</a>
-        <a href="../index.html#Project">Project</a>
-        <a>&nbsp;</a>
-        <a href="https://github.com/seopangs" target="_blank">GitHub</a>
-      </div>
-    
-
-    <div class="content">
-        <section>
-        <div class="project_title">
-            귤러가요
-        </div> 
-        <p>
-            Unreal Engine을 회전 3D 플랫폼 게임<br>
-            게임잼 주제: 귤, 소리, 갯벌
-        </p>
-        <img src="./Image/WinterGameJam2023.png" alt="프로젝트 이미지" width=500px">
-        <iframe width="500" height="280" src="https://www.youtube.com/embed/r7RXkzD2n-k?si=38ICjdT5MdlUhWwH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <br>
-        <p>
-            <subtitle>기간</subtitle><br>
-            <p>
-                2023-12-26 ~ 2023-12-27
-            </p>
-            <subtitle>사용된 기술</subtitle><br>
-            <p>
-                Unreal Engine 4, C++
-            </p>
-            <subtitle>팀 구성</subtitle><br>
-            <p>
-                3명
-            </p>
-            <subtitle>맡은 역할</subtitle><br>
-            <p>
-                게임 기획, 게임 프로그래밍
-            </p>
-            <subtitle>관련 활동</subtitle><br>
-            <p>
-                상명대학교 게임전공 2023 동계 게임잼
-            </p>
-        </p>
-        <br>
-        <p>
-            <subtitle>프로젝트에 기여한 역할</subtitle>
-            <p>
-                프로젝트 총괄<br><br>
-                <subtitle>기획</subtitle><br>
-                귤: 귤이 굴러가는 게임 기획<br>
-                소리: 소리를 듣고 파도를 예측하고 파도를 피하는 게임 기획<br>
-                갯벌: 갯벌에 빠진 귤이 탈출하는 게임 기획<br>
-                <br>
-                <subtitle>개발</subtitle><br>
-                플레이어(귤)을 방향키로 굴러가도록 시스템 개발<br>
-                일정 랜덤 시간마다 파도가 차오르게 하는 시스템 개발<br>
-                발판을 오래 밟으면 가라앉는 시스템 개발<br>
-                언리얼 시퀀서를 통핸 시네마틱 영상 제작<br>
-                등등 기타 게임의 모든 개발 
-
-            </p>
-            <br>
-            
-            <br><br>
-        </p>
-    </section>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="귤러가요 프로젝트 상세 설명">
+    <title>
+      귤러가요 | Jin Yejun
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true">
     </div>
-    
-   
-</body>
+    <header class="site-header">
+      <a class="logo" href="../index.html">
+        <span class="logo-mark">
+          JY
+        </span>
+        <span class="logo-text">
+          GAME PROGRAMMER
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="../index.html#projects">
+          Projects
+        </a>
+        <a href="../index.html#skills">
+          Skills
+        </a>
+        <a href="../index.html#contact">
+          Contact
+        </a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+        <span>
+        </span>
+        <span>
+        </span>
+      </button>
+    </header>
+    <main class="detail-main" id="project-detail">
+    </main>
+    <footer>
+      <p data-profile-copyright>
+        © 2026 Jin Yejun. Game Programmer Portfolio.
+      </p>
+      <a href="../index.html">
+        Portfolio Home ↑
+      </a>
+    </footer>
+    <script src="detail-page.js">
+    </script>
+    <script src="../profile-data.js">
+    </script>
+    <script src="../script.js">
+    </script>
+  </body>
 </html>
-

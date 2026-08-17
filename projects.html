@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jin Yejun 게임 프로그래머 전체 프로젝트">
+    <title>Projects | Jin Yejun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="logo" href="index.html" aria-label="포트폴리오 홈으로 이동">
+        <span class="logo-mark">JY</span>
+        <span class="logo-text">GAME PROGRAMMER</span>
+      </a>
+
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="detail-main">
+      <section class="section detail-hero reveal">
+        <a class="detail-back" href="index.html#projects">← 포트폴리오 홈으로</a>
+        <div class="detail-hero-grid">
+          <div>
+            <p class="eyebrow">ALL PROJECTS</p>
+            <h1>전체 프로젝트</h1>
+            <p class="detail-lead">전공 과제와 게임잼에서 제작한 프로젝트를 한곳에 정리했습니다.</p>
+          </div>
+          <div class="detail-summary">
+            <div>
+              <span>PROJECTS</span>
+              <strong data-project-count>8 Projects</strong>
+            </div>
+            <div>
+              <span>ENGINES</span>
+              <strong>Unreal · Unity</strong>
+            </div>
+            <div>
+              <span>LANGUAGES</span>
+              <strong>C++ · C#</strong>
+            </div>
+            <div>
+              <span>FOCUS</span>
+              <strong>Gameplay</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section projects-section">
+        <div class="project-list" id="project-list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-profile-copyright>© 2026 Jin Yejun. Game Programmer Portfolio.</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+    <script src="portfolio-data.js"></script>
+    <script src="profile-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
