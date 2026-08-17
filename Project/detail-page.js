@@ -67,7 +67,7 @@ function renderProjectDetail(projects) {
   const implementation = project.implementation ?? project.features ?? [];
   const architecture = project.architecture ?? [];
   const problem = project.problem ?? {};
-  const imagePath = `..${project.image_src}`;
+  const imagePath = `../${project.image_src.replace(/^\.?\//, "")}`;
   const youtubeEmbedUrl = getYouTubeEmbedUrl(project.youtube_url);
   const media = youtubeEmbedUrl
     ? `<iframe src="${escapeDetailHtml(youtubeEmbedUrl)}" title="${escapeDetailHtml(project.title)} 플레이 영상" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`

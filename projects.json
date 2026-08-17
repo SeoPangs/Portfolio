@@ -30,7 +30,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/WanderingStars.html",
-    "image_src": "/assets/project-images/WanderingStars.png"
+    "image_src": "assets/project-images/WanderingStars.png"
   },
   {
     "title": "Light Up Life",
@@ -63,7 +63,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/LightUpLife.html",
-    "image_src": "/assets/project-images/LightUpLife.png"
+    "image_src": "assets/project-images/LightUpLife.png"
   },
   {
     "title": "Drive By Draw",
@@ -96,7 +96,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/DriveByDraw.html",
-    "image_src": "/assets/project-images/DriveByDraw.png"
+    "image_src": "assets/project-images/DriveByDraw.png"
   },
   {
     "title": "흔들리는 원두향에서 네 커피향이 느껴진거야",
@@ -130,7 +130,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/WinterGameJam2022.html",
-    "image_src": "/assets/project-images/WinterGameJam2022.png"
+    "image_src": "assets/project-images/WinterGameJam2022.png"
   },
   {
     "title": "꿀벌 시뮬레이션",
@@ -164,7 +164,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/BeeSimulation.html",
-    "image_src": "/assets/project-images/BeeSimulation.png"
+    "image_src": "assets/project-images/BeeSimulation.png"
   },
   {
     "title": "귤러가요",
@@ -198,7 +198,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/WinterGameJam2023.html",
-    "image_src": "/assets/project-images/WinterGameJam2023.png"
+    "image_src": "assets/project-images/WinterGameJam2023.png"
   },
   {
     "title": "PEASE",
@@ -232,7 +232,7 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/Pease.html",
-    "image_src": "/assets/project-images/WinterGameJam2023.png"
+    "image_src": "assets/project-images/WinterGameJam2023.png"
   },
   {
     "title": "환생등용묘차",
@@ -266,6 +266,6 @@
     "github_url": "",
     "demo_url": "",
     "site": "./Project/ReincarnationRace.html",
-    "image_src": "/assets/project-images/WinterGameJam2023.png"
+    "image_src": "assets/project-images/WinterGameJam2023.png"
   }
 ]
