@@ -48,7 +48,7 @@
 
         <div class="hero-actions">
           <a class="button button-primary" href="#projects">프로젝트 보기</a>
-          <a class="button button-secondary" href="assets/resume-placeholder.pdf" download>이력서 다운로드</a>
+          <!-- <a class="button button-secondary" href="assets/resume-placeholder.pdf" download>이력서 다운로드</a> -->
         </div>
 
         <ul class="hero-stats" aria-label="핵심 요약">
@@ -62,33 +62,14 @@
         <div class="code-window">
           <div class="window-bar">
             <span></span><span></span><span></span>
-            <p>CombatComponent.cpp</p>
+            <p data-hero-code-title>JinYeJun.h</p>
           </div>
-          <pre><code><span class="code-muted">// Gameplay Ability activation</span>
-<span class="code-keyword">void</span> UCombatComponent::TryAttack()
-{
-    <span class="code-keyword">if</span> (!CanAttack()) <span class="code-keyword">return</span>;
-
-    FGameplayEventData EventData;
-    EventData.EventTag = AttackTag;
-
-    UAbilitySystemBlueprintLibrary::
-        SendGameplayEventToActor(
-            GetOwner(),
-            AttackTag,
-            EventData
-        );
-}</code></pre>
-        </div>
-
-        <div class="floating-card card-engine">
-          <span>ENGINE</span>
-          <strong>Unreal Engine 5</strong>
+          <pre><code id="hero-code">코드를 불러오는 중입니다...</code></pre>
         </div>
 
         <div class="floating-card card-focus">
           <span>FOCUS</span>
-          <strong>Gameplay Systems</strong>
+          <strong>Game Dev</strong>
         </div>
       </div>
     </section>
@@ -105,7 +86,10 @@
         </p>
       </div>
 
-      <div class="project-list" id="project-list"></div>
+      <div class="project-list" id="project-list" data-limit="3"></div>
+      <div class="projects-more reveal">
+        <a class="button button-secondary" href="projects.html">전체 프로젝트 보기 →</a>
+      </div>
     </section>
 
     <section class="section skills-section" id="skills">
@@ -119,46 +103,7 @@
         </p>
       </div>
 
-      <div class="skills-grid">
-        <article class="skill-card reveal">
-          <span class="skill-number">01</span>
-          <h3>Gameplay Programming</h3>
-          <p>전투, 상호작용, AI, 캐릭터 상태 및 데이터 중심 시스템 설계</p>
-          <div class="skill-list">
-            <span>Unreal C++</span>
-            <span>Blueprint</span>
-            <span>Gameplay Ability System</span>
-            <span>Enhanced Input</span>
-            <span>Behavior Tree</span>
-          </div>
-        </article>
-
-        <article class="skill-card reveal">
-          <span class="skill-number">02</span>
-          <h3>Multiplayer</h3>
-          <p>서버 권한 구조를 기준으로 한 게임 상태와 액터 동기화</p>
-          <div class="skill-list">
-            <span>Replication</span>
-            <span>RPC</span>
-            <span>Dedicated Server</span>
-            <span>Session</span>
-            <span>Lobby</span>
-          </div>
-        </article>
-
-        <article class="skill-card reveal">
-          <span class="skill-number">03</span>
-          <h3>Architecture & Tools</h3>
-          <p>유지보수성과 협업 효율을 고려한 모듈화 및 에디터 도구 제작</p>
-          <div class="skill-list">
-            <span>Design Pattern</span>
-            <span>Data Asset</span>
-            <span>Subsystem</span>
-            <span>Editor Utility</span>
-            <span>Git</span>
-          </div>
-        </article>
-      </div>
+      <div class="skills-grid" id="skills-grid"></div>
     </section>
 
     <section class="section case-section" id="experience">
@@ -172,57 +117,7 @@
         </p>
       </div>
 
-      <div class="case-grid">
-        <article class="case-card reveal">
-          <div class="case-header">
-            <span>CASE 01</span>
-            <strong>멀티플레이 이동 불일치</strong>
-          </div>
-          <div class="case-body">
-            <div>
-              <h4>문제</h4>
-              <p>보드게임 이동 중 클라이언트마다 캐릭터 위치가 달라지는 현상이 발생했습니다.</p>
-            </div>
-            <div>
-              <h4>원인</h4>
-              <p>각 클라이언트가 자체 보간을 수행하고 이동 종료 시점을 개별 판정하고 있었습니다.</p>
-            </div>
-            <div>
-              <h4>해결</h4>
-              <p>서버가 이동 경로와 시작 시간을 확정하고, 클라이언트는 동일한 타임라인을 재생하도록 변경했습니다.</p>
-            </div>
-            <div class="case-result">
-              <span>RESULT</span>
-              <strong>위치 오차 평균 42cm → 3cm 이하</strong>
-            </div>
-          </div>
-        </article>
-
-        <article class="case-card reveal">
-          <div class="case-header">
-            <span>CASE 02</span>
-            <strong>스킬 코드 중복 증가</strong>
-          </div>
-          <div class="case-body">
-            <div>
-              <h4>문제</h4>
-              <p>캐릭터가 늘어날수록 공격 스킬 클래스와 예외 분기가 빠르게 증가했습니다.</p>
-            </div>
-            <div>
-              <h4>원인</h4>
-              <p>공격 판정, 이펙트, 자원 소모가 하나의 클래스에 강하게 결합되어 있었습니다.</p>
-            </div>
-            <div>
-              <h4>해결</h4>
-              <p>공통 실행 흐름은 Ability에 두고 세부 동작을 데이터와 태스크 조합으로 분리했습니다.</p>
-            </div>
-            <div class="case-result">
-              <span>RESULT</span>
-              <strong>신규 스킬 제작 시간 약 50% 감소</strong>
-            </div>
-          </div>
-        </article>
-      </div>
+      <div class="case-grid" id="case-grid"></div>
     </section>
 
     <section class="section about-section">
@@ -246,20 +141,21 @@
         <p>게임플레이 프로그래머 또는 언리얼 엔진 클라이언트 프로그래머 포지션에 지원하고 있습니다.</p>
 
         <div class="contact-links">
-          <a href="mailto:example@email.com">example@email.com ↗</a>
-          <a href="#">GitHub ↗</a>
-          <a href="#">Blog ↗</a>
+          <a href="mailto:example@email.com" data-profile-email>example@email.com ↗</a>
+          <a href="#" data-profile-github>GitHub ↗</a>
+          <!-- <a href="#">Blog ↗</a> -->
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Jin Yejun. Built with HTML, CSS and JavaScript.</p>
+    <p data-profile-copyright>© 2026 Jin Yejun. Game Programmer Portfolio.</p>
     <a href="#home">Back to top ↑</a>
   </footer>
 
   <script src="portfolio-data.js"></script>
+  <script src="profile-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

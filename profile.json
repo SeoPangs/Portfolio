@@ -1,0 +1,46 @@
+{
+  "name": "Jin Yejun",
+  "initials": "YJ",
+  "role": "GAME PROGRAMMER",
+  "email": "croderknight@gmail.com",
+  "github": "https://github.com/seopangs",
+  "copyright_year": 2026,
+  "hero_code": {
+    "title": "JinYeJun.h",
+    "language": "cpp",
+    "source": "assets/project-code/JinYeJun.h"
+  },
+  "skills": [
+    {
+      "title": "Gameplay Programming",
+      "description": "전투, 상호작용, AI, 캐릭터 상태 및 데이터 중심 시스템 설계",
+      "items": ["Unreal C++", "Blueprint", "Gameplay Ability System", "Enhanced Input", "Behavior Tree"]
+    },
+    {
+      "title": "Multiplayer",
+      "description": "서버 권한 구조를 기준으로 한 게임 상태와 액터 동기화",
+      "items": ["Replication", "RPC", "Dedicated Server", "Session", "Lobby"]
+    },
+    {
+      "title": "Architecture & Tools",
+      "description": "유지보수성과 협업 효율을 고려한 모듈화 및 에디터 도구 제작",
+      "items": ["Design Pattern", "Data Asset", "Subsystem", "Editor Utility", "Git"]
+    }
+  ],
+  "problem_solving": [
+    {
+      "title": "멀티플레이 이동 불일치",
+      "problem": "보드게임 이동 중 클라이언트마다 캐릭터 위치가 달라지는 현상이 발생했습니다.",
+      "cause": "각 클라이언트가 자체 보간을 수행하고 이동 종료 시점을 개별 판정하고 있었습니다.",
+      "solution": "서버가 이동 경로와 시작 시간을 확정하고, 클라이언트는 동일한 타임라인을 재생하도록 변경했습니다.",
+      "result": "위치 오차 평균 42cm → 3cm 이하"
+    },
+    {
+      "title": "스킬 코드 중복 증가",
+      "problem": "캐릭터가 늘어날수록 공격 스킬 클래스와 예외 분기가 빠르게 증가했습니다.",
+      "cause": "공격 판정, 이펙트, 자원 소모가 하나의 클래스에 강하게 결합되어 있었습니다.",
+      "solution": "공통 실행 흐름은 Ability에 두고 세부 동작을 데이터와 태스크 조합으로 분리했습니다.",
+      "result": "신규 스킬 제작 시간 약 50% 감소"
+    }
+  ]
+}

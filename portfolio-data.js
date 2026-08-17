@@ -1,53 +1,64 @@
 const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 
+const formatSemester = (semester) => {
+  const value = Number(semester);
+  if (!Number.isInteger(value) || value < 1) return String(semester ?? "");
+  const grade = Math.ceil(value / 2);
+  const term = value % 2 === 1 ? 1 : 2;
+  return `${grade}학년 ${term}학기`;
+};
+
 async function loadPortfolioData() {
   const response = await fetch("projects.json");
   if (!response.ok) throw new Error("projects.json을 불러오지 못했습니다.");
   return response.json();
 }
 
-function renderProjectCards(data) {
+function renderProjectCards(projects) {
   const list = document.querySelector("#project-list");
   if (!list) return;
-  list.innerHTML = data.projects.map((p, index) => `
-    <a class="project-card ${index === 0 ? "featured " : ""}reveal" href="project.html?id=${encodeURIComponent(p.id)}" aria-label="${escapeHtml(p.title)} 상세 페이지 보기">
-      <div class="project-image ${escapeHtml(p.imageClass)}">
-        <div class="project-overlay"><span>${escapeHtml(p.number)}</span><p>${escapeHtml(p.subtitle)}</p></div>
-      </div>
+  const activeProjects = projects.filter((project) => project.hide !== true);
+  document.querySelectorAll("[data-project-count]").forEach((element) => {
+    element.textContent = `${activeProjects.length} Projects`;
+  });
+  const limit = Number.parseInt(list.dataset.limit, 10);
+  const visibleProjects = Number.isFinite(limit) ? activeProjects.slice(0, limit) : activeProjects;
+  list.innerHTML = visibleProjects.map((p, index) => `
+    <article class="project-card ${index === 0 ? "featured " : ""}reveal">
+      <a class="project-image" href="${escapeHtml(p.site)}" style="background-image: url('${escapeHtml(p.image_src)}')" aria-label="${escapeHtml(p.title)} 상세 페이지 보기">
+        <div class="project-overlay"><span>${String(index + 1).padStart(2, "0")}</span><p>${escapeHtml(formatSemester(p.semester))}</p></div>
+      </a>
       <div class="project-content">
-        <div class="project-meta"><span>${escapeHtml(p.type)}</span><span>${escapeHtml(p.year)}</span></div>
-        <h3>${escapeHtml(p.title)}</h3>
-        <p>${escapeHtml(p.summary)}</p>
-        <div class="tech-tags">${p.tech.map(t => `<span>${escapeHtml(t)}</span>`).join("")}</div>
-        <ul class="project-points">${p.points.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
-        <div class="project-links" aria-hidden="true"><span>상세 보기 ↗</span><span>GitHub</span><span>Demo</span></div>
+        <div class="project-meta"><span>${escapeHtml(p.purpose)}</span><span>${escapeHtml(formatSemester(p.semester))}${p.team_size ? ` · 팀 인원: ${escapeHtml(p.team_size)}명` : ""}</span></div>
+        <h3><a class="project-title-link" href="${escapeHtml(p.site)}">${escapeHtml(p.title)}</a></h3>
+        <p>${escapeHtml(p.explanation)}</p>
+        <div class="tech-tags">${(p.tags ?? []).map(t => `<span>${escapeHtml(t)}</span>`).join("")}</div>
+        <ul class="project-points">${(p.features ?? []).map(feature => `<li>${escapeHtml(feature)}</li>`).join("")}</ul>
+        <div class="project-links">
+          <a href="${escapeHtml(p.site)}">상세 보기 ↗</a>
+          ${p.github_url ? `<a href="${escapeHtml(p.github_url)}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>` : ""}
+          ${p.demo_url ? `<a href="${escapeHtml(p.demo_url)}" target="_blank" rel="noopener noreferrer">Play Demo ↗</a>` : ""}
+        </div>
       </div>
-    </a>`).join("");
+    </article>`).join("");
 }
 
-function renderProjectDetail(data) {
+function renderProjectDetail(projects) {
   const root = document.querySelector("#project-detail");
   if (!root) return;
-  const id = new URLSearchParams(location.search).get("id");
-  const idx = Math.max(0, data.projects.findIndex(p => p.id === id));
-  const p = data.projects[idx] || data.projects[0];
-  const next = data.projects[(idx + 1) % data.projects.length];
-  document.title = `${p.title} | ${data.profile.name}`;
+  const title = new URLSearchParams(location.search).get("title");
+  const p = projects.find(project => project.title === title) ?? projects[0];
+  if (!p) return;
+  document.title = `${p.title} | Jin Yejun`;
   root.innerHTML = `
-    <section class="section detail-hero reveal"><a class="detail-back" href="index.html#projects">← 프로젝트 목록으로</a><div class="detail-hero-grid"><div><p class="eyebrow">PROJECT ${escapeHtml(p.number)} · ${escapeHtml(p.subtitle.toUpperCase())}</p><h1>${escapeHtml(p.title)}</h1><p class="detail-lead">${escapeHtml(p.lead)}</p></div><div class="detail-summary"><div><span>TYPE</span><strong>${escapeHtml(p.type)}</strong></div><div><span>PERIOD</span><strong>${escapeHtml(p.period)}</strong></div><div><span>ROLE</span><strong>${escapeHtml(p.roleSummary)}</strong></div><div><span>ENGINE</span><strong>${escapeHtml(p.engine)}</strong></div></div></div></section>
-    <section class="section"><div class="detail-media reveal"><div class="detail-media-inner"><span>GAMEPLAY VIDEO / GIF</span><strong>실제 플레이 영상을 배치하는 영역</strong><p>YouTube 영상, MP4 또는 GIF로 교체하세요.</p></div></div></section>
-    <section class="section detail-layout"><div class="detail-content">
-      <section class="reveal" id="overview"><p class="eyebrow">01 · OVERVIEW</p><h2>프로젝트 개요</h2><p>${escapeHtml(p.overview)}</p><div class="tech-tags">${p.tech.map(t=>`<span>${escapeHtml(t)}</span>`).join("")}</div></section>
-      <section class="reveal" id="implementation"><p class="eyebrow">02 · IMPLEMENTATION</p><h2>핵심 구현</h2><ul>${p.implementation.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul><div class="architecture-box">${p.architecture.map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><strong>${escapeHtml(x)}</strong></div>`).join("")}</div></section>
-      <section class="reveal" id="problem"><p class="eyebrow">03 · PROBLEM SOLVING</p><h2>문제 해결 과정</h2><h3>문제</h3><p>${escapeHtml(p.problem.problem)}</p><h3>해결 방법</h3><p>${escapeHtml(p.problem.solution)}</p><div class="detail-highlight"><strong>결과</strong><span>${escapeHtml(p.problem.result)}</span></div></section>
-      <section class="reveal" id="code"><p class="eyebrow">04 · CODE & DOCUMENTS</p><h2>코드와 문서</h2><p>핵심 코드 일부, 클래스 다이어그램, 네트워크 흐름도 또는 기술 문서를 배치하는 영역입니다. 전체 코드를 붙이기보다 설계 판단을 설명할 수 있는 부분만 선별하는 것이 좋습니다.</p><div class="project-links"><a href="${escapeHtml(p.links.github)}">GitHub 저장소 ↗</a><a href="${escapeHtml(p.links.document)}">기술 문서 ↗</a><a href="${escapeHtml(p.links.demo)}">시연 영상 ↗</a></div></section>
-      <a class="next-project reveal" href="project.html?id=${encodeURIComponent(next.id)}"><div><span>NEXT PROJECT</span><strong>${escapeHtml(next.title)}</strong></div><b>프로젝트 보기 →</b></a>
-    </div><aside class="detail-sidebar reveal"><h3>페이지 목차</h3><a href="#overview">프로젝트 개요</a><a href="#implementation">핵심 구현</a><a href="#problem">문제 해결 과정</a><a href="#code">코드와 문서</a><a class="button button-primary" href="${escapeHtml(p.links.github)}">GitHub 보기</a></aside></section>`;
+    <section class="section detail-hero reveal"><a class="detail-back" href="index.html#projects">← 프로젝트 목록으로</a><div class="detail-hero-grid"><div><p class="eyebrow">${escapeHtml(p.purpose)} · ${escapeHtml(formatSemester(p.semester))}</p><h1>${escapeHtml(p.title)}</h1><p class="detail-lead">${escapeHtml(p.explanation)}</p><div class="tech-tags">${(p.tags ?? []).map(tag => `<span>${escapeHtml(tag)}</span>`).join("")}</div></div></div></section>
+    <section class="section"><div class="detail-media reveal" style="background-image:url('${escapeHtml(p.image_src)}');background-size:cover;background-position:center"></div></section>`;
 }
 
 loadPortfolioData().then(data => {
-  renderProjectCards(data);
-  renderProjectDetail(data);
+  const projects = Array.isArray(data) ? data : (data.projects ?? []);
+  renderProjectCards(projects);
+  renderProjectDetail(projects);
   window.dispatchEvent(new Event("portfolioRendered"));
 }).catch(error => {
   console.error(error);

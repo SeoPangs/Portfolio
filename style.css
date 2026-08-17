@@ -157,11 +157,14 @@ button {
 }
 
 .hero h1 {
-  font-size: clamp(48px, 6.3vw, 86px);
+  font-size: clamp(48px, 6.3vw, 72px);
+  word-break: keep-all;
 }
 
 .hero h1 span {
+  display: inline-block;
   color: var(--accent);
+  white-space: nowrap;
 }
 
 .hero-description {
@@ -292,6 +295,23 @@ button {
   color: var(--accent);
 }
 
+.code-function {
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+.code-type {
+  color: #c4b5fd;
+}
+
+.code-string {
+  color: #fbbf77;
+}
+
+.code-preprocessor {
+  color: #f472b6;
+}
+
 .floating-card {
   position: absolute;
   min-width: 180px;
@@ -314,11 +334,6 @@ button {
   display: block;
   margin-top: 6px;
   font-size: 14px;
-}
-
-.card-engine {
-  left: -20px;
-  bottom: 78px;
 }
 
 .card-focus {
@@ -355,10 +370,17 @@ button {
   gap: 28px;
 }
 
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
+}
+
 .project-card {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  min-height: 490px;
+  min-height: 0;
+  align-items: stretch;
   border: 1px solid var(--line);
   background: var(--panel);
   overflow: hidden;
@@ -371,10 +393,18 @@ button {
 }
 
 .project-image {
+  display: block;
   position: relative;
-  min-height: 360px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  align-self: stretch;
   overflow: hidden;
   background-color: #171a20;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .project-image::before,
@@ -451,6 +481,15 @@ button {
   font-size: clamp(26px, 3vw, 38px);
   line-height: 1.25;
   letter-spacing: -.035em;
+}
+
+.project-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-title-link:hover {
+  color: var(--accent);
 }
 
 .project-content > p {
@@ -543,9 +582,11 @@ footer a:hover {
 }
 
 .skill-card h3 {
-  margin: 62px 0 12px;
-  font-size: 23px;
+  margin: 26px 0 12px;
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.25;
   letter-spacing: -.03em;
+  word-break: keep-all;
 }
 
 .skill-card p {
@@ -772,7 +813,7 @@ footer {
   }
 
   .hero h1 {
-    font-size: 47px;
+    font-size: clamp(34px, 10vw, 42px);
   }
 
   .hero-description {
@@ -812,11 +853,6 @@ footer {
     min-width: 150px;
   }
 
-  .card-engine {
-    left: -5px;
-    bottom: 22px;
-  }
-
   .card-focus {
     right: -4px;
     top: 25px;
@@ -827,7 +863,7 @@ footer {
   }
 
   .project-image {
-    min-height: 290px;
+    min-height: 0;
   }
 
   .about-card {
@@ -850,10 +886,8 @@ footer {
 }
 
 /* Project detail pages */
-.project-card { color: inherit; text-decoration: none; }
-.project-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.project-links span:first-child { color: var(--text); }
-.project-card:hover .project-links span:first-child { color: var(--accent); }
+.project-card { color: inherit; }
+.project-image:focus-visible,.project-title-link:focus-visible,.project-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .detail-main { position: relative; z-index: 1; }
 .detail-hero { padding-top: 150px; padding-bottom: 72px; border-bottom: 1px solid var(--line); }
@@ -865,10 +899,15 @@ footer {
 .detail-summary { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); background: var(--panel); }
 .detail-summary div { padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .detail-summary div:nth-child(2n) { border-right: 0; }
-.detail-summary div:nth-last-child(-n+2) { border-bottom: 0; }
+.detail-summary div:last-child { border-bottom: 0; }
+.detail-summary div:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
+.detail-summary div:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
 .detail-summary span { display: block; color: var(--muted); font-size: 10px; letter-spacing: .12em; }
 .detail-summary strong { display: block; margin-top: 7px; font-size: 14px; }
 .detail-media { min-height: 520px; display: grid; place-items: center; border: 1px solid var(--line); background: radial-gradient(circle at 50% 45%, rgba(185,255,56,.15), transparent 28%), repeating-linear-gradient(90deg, transparent 0 59px, rgba(255,255,255,.035) 60px), repeating-linear-gradient(0deg, transparent 0 59px, rgba(255,255,255,.035) 60px), #111318; }
+.detail-media img { width: 100%; height: 520px; display: block; object-fit: cover; }
+.detail-media:has(iframe) { min-height: 0; aspect-ratio: 16 / 9; }
+.detail-media iframe { width: 100%; height: 100%; display: block; border: 0; background: #000; }
 .detail-media-inner { text-align: center; }
 .detail-media-inner span { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
 .detail-media-inner strong { display: block; margin-top: 12px; font-size: 28px; }
@@ -891,9 +930,9 @@ footer {
 .detail-sidebar h3 { margin: 0 0 20px; font-size: 15px; }
 .detail-sidebar a { display: block; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 .detail-sidebar a:hover { color: var(--accent); }
-.detail-sidebar .button { width: 100%; margin-top: 22px; color: #0a0b0d; }
+.detail-sidebar .button { width: calc(100% - 16px); margin: 22px 8px 0; color: #0a0b0d; }
 .next-project { display: flex; justify-content: space-between; align-items: center; padding: 40px; border: 1px solid var(--line); background: var(--panel); }
 .next-project span { color: var(--muted); font-size: 12px; }
 .next-project strong { display: block; margin-top: 6px; font-size: 22px; }
-@media(max-width:960px){.detail-hero-grid,.detail-layout{grid-template-columns:1fr}.detail-sidebar{position:static}.architecture-box{grid-template-columns:1fr}.detail-media{min-height:380px}}
+@media(max-width:960px){.detail-hero-grid,.detail-layout{grid-template-columns:1fr}.detail-sidebar{position:static}.architecture-box{grid-template-columns:1fr}.detail-media{min-height:380px}.detail-media:has(iframe){min-height:0}.detail-media img{height:380px}}
 @media(max-width:700px){.detail-hero{padding-top:120px}.detail-summary{grid-template-columns:1fr}.detail-summary div{border-right:0}.detail-summary div:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.detail-summary div:last-child{border-bottom:0}.next-project{align-items:flex-start;flex-direction:column;gap:16px}}
